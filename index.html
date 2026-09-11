@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraFlow — Генератор звуковой атмосферы и шумов для фокуса | Alexcdraft Studios</title>
+  <meta name="description" content="Бесплатный интерактивный генератор эмбиент-звуков: дождь, ночной лес, костер, океан, кафе и бинауральные ритмы. Синтез в реальном времени через Web Audio API. Alexcdraft Studios.">
+  <meta name="keywords" content="звуки дождя онлайн, белый шум, генератор шума, звуки природы для работы, расслабление, медитация, бинауральные волны, фокус таймер, lofi atmosphere, auraflow, alexcdraft studios">
+  <meta name="author" content="Alexcdraft Studios">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AuraFlow — Атмосферные звуки и генератор шумов для работы и сна">
+  <meta property="og:description" content="Интерактивный микшер звуков природы и бинауральных частот. Создайте свой идеальный звуковой фон.">
+  <meta property="og:image" content="icon.png">
+
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AuraFlow",
+    "description": "Interactive ambient sound and noise generator for deep focus and relaxation.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires Web Audio API support",
+    "author": {
+      "@type": "Organization",
+      "name": "Alexcdraft Studios"
+    }
+  }
+  </script>
+
+  <style>
+:root, [data-theme="dark"] {
+  --bg-base: #090d16;
+  --bg-card: rgba(17, 24, 39, 0.72);
+  --bg-card-solid: #111827;
+  --bg-card-hover: rgba(31, 41, 55, 0.85);
+  --bg-control: #1e293b;
+  --bg-control-active: #0d9488;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(20, 184, 166, 0.5);
+  --text-main: #f3f4f6;
+  --text-dim: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #0d9488;
+  --accent-secondary: #14b8a6;
+  --accent-cta: #f97316;
+  --accent-glow: rgba(20, 184, 166, 0.25);
+  --canvas-bg: #070a10;
+  --card-radius: 16px;
+  --pill-radius: 9999px;
+  --panel-blur: blur(14px);
+}
+
+[data-theme="light"] {
+  --bg-base: #f0fdfa;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-solid: #ffffff;
+  --bg-card-hover: rgba(240, 253, 250, 0.95);
+  --bg-control: #e2e8f0;
+  --bg-control-active: #0d9488;
+  --border: rgba(13, 148, 136, 0.15);
+  --border-focus: rgba(13, 148, 136, 0.5);
+  --text-main: #134e4a;
+  --text-dim: #475569;
+  --text-muted: #94a3b8;
+  --accent: #0d9488;
+  --accent-secondary: #14b8a6;
+  --accent-cta: #f97316;
+  --accent-glow: rgba(13, 148, 136, 0.2);
+  --canvas-bg: #e6fffa;
+  --card-radius: 16px;
+  --pill-radius: 9999px;
+  --panel-blur: blur(14px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.header-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+}
+
+.header-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px var(--accent-glow);
+  background: #111827;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.brand-app-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.brand-author {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-boosty-support {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-boosty-support:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.55);
+}
+
+.toggle-pill-group {
+  display: flex;
+  background: var(--bg-control);
+  padding: 3px;
+  border-radius: var(--pill-radius);
+  border: 1px solid var(--border);
+  gap: 2px;
+}
+
+.toggle-pill-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: var(--pill-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.toggle-pill-btn.active {
+  background: var(--bg-card-solid);
+  color: var(--text-main);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.toggle-pill-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ad-banner-zone {
+  max-width: 1440px;
+  margin: 12px auto 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.ad-banner-box {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  overflow: hidden;
+}
+
+.ad-micro-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.ad-iframe-holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ad-iframe-holder iframe {
+  border: 0;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+}
+
+.main-layout {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px 40px 24px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+.visualizer-hero {
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.visualizer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-title-group h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.hero-title-group p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.master-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-master-play {
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: #fff;
+  border: none;
+  border-radius: var(--pill-radius);
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transition: all 0.2s ease;
+}
+
+.btn-master-play:hover {
+  transform: scale(1.02);
+}
+
+.btn-control-round {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-control-round:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-control-round svg {
+  width: 18px;
+  height: 18px;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 200px;
+  background: var(--canvas-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+#visual-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.preset-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.preset-chip-btn {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--pill-radius);
+  padding: 7px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.preset-chip-btn:hover {
+  color: var(--text-main);
+  border-color: var(--accent-secondary);
+}
+
+.preset-chip-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px var(--accent-glow);
+}
+
+.sounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.sound-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sound-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+}
+
+.sound-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.sound-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sound-title-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sound-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-control);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-secondary);
+  transition: all 0.2s ease;
+}
+
+.sound-card.active .sound-icon-box {
+  background: var(--accent);
+  color: #fff;
+}
+
+.sound-icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sound-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.sound-desc {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.sound-toggle-switch {
+  width: 44px;
+  height: 24px;
+  background: var(--bg-control);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sound-card.active .sound-toggle-switch {
+  background: var(--accent);
+}
+
+.sound-toggle-knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+}
+
+.sound-card.active .sound-toggle-knob {
+  transform: translateX(20px);
+}
+
+.volume-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.volume-slider-row svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.slider-vol {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-control);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider-vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease;
+}
+
+.slider-vol::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timer-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.timer-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  width: 100%;
+}
+
+.timer-title-row svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-secondary);
+}
+
+.timer-digits {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.timer-pills-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+}
+
+.timer-pill-btn {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--pill-radius);
+  padding: 5px 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.timer-pill-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.timer-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-timer-toggle {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-timer-reset {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.binaural-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.binaural-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.binaural-title-row svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-secondary);
+}
+
+.binaural-desc {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.wave-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.wave-btn {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.15s ease;
+}
+
+.wave-btn span {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.wave-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.wave-btn.active span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ad-sidebar-box {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 94px;
+  overflow: hidden;
+}
+
+.seo-info-section {
+  max-width: 1440px;
+  margin: 10px auto 40px auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.seo-bento-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.seo-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.seo-card h2, .seo-card h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seo-card p, .seo-card li {
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.seo-features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.seo-feature-box {
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seo-feature-box strong {
+  font-size: 0.82rem;
+  color: var(--text-main);
+}
+
+.seo-feature-box span {
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
+.support-banner-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  display: none;
+}
+
+.support-banner-overlay.active {
+  display: block;
+}
+
+.waterfall-col-left, .waterfall-col-right {
+  position: absolute;
+  top: -800px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 360px;
+  pointer-events: auto;
+  animation: scrollDown 20s linear infinite;
+  z-index: 100000;
+}
+
+.waterfall-col-left {
+  left: 30px;
+}
+
+.waterfall-col-right {
+  right: 30px;
+  animation-delay: -10s;
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(1400px); }
+}
+
+.waterfall-ad-card {
+  background: var(--bg-card-solid);
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.85);
+  width: 320px;
+  min-height: 120px;
+}
+
+.waterfall-ad-card iframe {
+  width: 100% !important;
+  height: 100px !important;
+  border: 0;
+  display: block;
+}
+
+.support-modal-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100001;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  max-width: 480px;
+  width: calc(100% - 40px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.support-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.support-modal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  display: block;
+}
+
+.support-modal-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.support-modal-sub {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.support-modal-text {
+  font-size: 0.84rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.support-modal-note {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.btn-waterfall-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--bg-control);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.btn-waterfall-close:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+  transform: scale(1.08);
+}
+
+.btn-boosty-action {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.45);
+  transition: all 0.2s ease;
+}
+
+.btn-boosty-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(249, 115, 22, 0.6);
+}
+
+.footer-bar {
+  border-top: 1px solid var(--border);
+  background: var(--bg-card);
+  padding: 16px 24px;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.footer-signature strong {
+  color: var(--text-main);
+}
+
+@media (max-width: 1200px) {
+  .waterfall-col-left, .waterfall-col-right {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+  .seo-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .seo-features-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .sounds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header class="header-bar">
+    <div class="header-container">
+      <a href="#" class="brand-block">
+        <div class="brand-icon-wrapper">
+          <img src="icon.png" class="brand-app-icon" width="38" height="38" style="width:38px;height:38px;border-radius:10px;object-fit:cover;display:block;" alt="AuraFlow">
+        </div>
+        <div class="brand-text-col">
+          <h1 class="brand-title">AuraFlow</h1>
+          <span class="brand-author">Alexcdraft Studios</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <button onclick="openBoostySupport()" class="btn-boosty-support" title="Поддержать Alexcdraft Studios">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span data-i18n="support_btn">Поддержать Boosty</span>
+        </button>
+
+        <div class="toggle-pill-group">
+          <button class="toggle-pill-btn active" id="btn-theme-dark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <span data-i18n="theme_dark">Тёмная</span>
+          </button>
+          <button class="toggle-pill-btn" id="btn-theme-light">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <span data-i18n="theme_light">Светлая</span>
+          </button>
+        </div>
+
+        <div class="toggle-pill-group">
+          <button class="toggle-pill-btn active" id="btn-lang-ru">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            RU
+          </button>
+          <button class="toggle-pill-btn" id="btn-lang-en">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            EN
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="ad-banner-zone">
+    <div class="ad-banner-box">
+      <span class="ad-micro-tag" data-i18n="ad_sponsor">СПОНСОРСКАЯ РЕКЛАМА</span>
+      <div class="ad-iframe-holder">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-layout" id="main-content">
+    
+    <div class="center-content">
+      
+      <section class="visualizer-hero">
+        <div class="visualizer-header">
+          <div class="hero-title-group">
+            <h2 data-i18n="hero_title">Звуковая сфера релаксации</h2>
+            <p data-i18n="hero_sub">Синтез аудиоволн в реальном времени с интерактивным визуализатором</p>
+          </div>
+
+          <div class="master-controls-bar">
+            <button class="btn-master-play" id="btn-master-toggle">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;" id="master-icon-play"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;display:none;" id="master-icon-pause"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <span id="master-btn-text" data-i18n="play_all">Включить атмосферу</span>
+            </button>
+            <button class="btn-control-round" id="btn-mute-all" title="Отключить звук">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="canvas-container">
+          <canvas id="visual-canvas"></canvas>
+        </div>
+
+        <div class="preset-pills-row">
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);" data-i18n="presets_title">Готовые миксы:</span>
+          <button class="preset-chip-btn" data-preset="rain">🌧️ <span data-i18n="preset_rain">Уютный дождь</span></button>
+          <button class="preset-chip-btn" data-preset="night">🌲 <span data-i18n="preset_forest">Ночной лес</span></button>
+          <button class="preset-chip-btn" data-preset="meditation">🧘 <span data-i18n="preset_zen">Глубокий дзен</span></button>
+          <button class="preset-chip-btn" data-preset="study">📚 <span data-i18n="preset_study">Учеба и фокус</span></button>
+        </div>
+      </section>
+
+      <div class="sounds-grid" id="sounds-container">
+        
+        <div class="sound-card" data-sound="rain">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6M8 14v6M12 16v6"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_rain_name">Летний дождь</div>
+                <div class="sound-desc" data-i18n="snd_rain_desc">Капли по листьям и крыше</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.7">
+          </div>
+        </div>
+
+        <div class="sound-card" data-sound="waves">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_ocean_name">Морской прибой</div>
+                <div class="sound-desc" data-i18n="snd_ocean_desc">Плавные накатывающие волны</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.6">
+          </div>
+        </div>
+
+        <div class="sound-card" data-sound="fire">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_fire_name">Ночной костёр</div>
+                <div class="sound-desc" data-i18n="snd_fire_desc">Потрескивание сухих дров</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.65">
+          </div>
+        </div>
+
+        <div class="sound-card" data-sound="wind">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_wind_name">Горный ветер</div>
+                <div class="sound-desc" data-i18n="snd_wind_desc">Мягкий шелест кроны деревьев</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.5">
+          </div>
+        </div>
+
+        <div class="sound-card" data-sound="forest">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_forest_name">Птицы и сверчки</div>
+                <div class="sound-desc" data-i18n="snd_forest_desc">Живая ночная природа</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.55">
+          </div>
+        </div>
+
+        <div class="sound-card" data-sound="whitenoise">
+          <div class="sound-card-header">
+            <div class="sound-title-col">
+              <div class="sound-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="2 2"/><circle cx="12" cy="12" r="4"/></svg>
+              </div>
+              <div>
+                <div class="sound-name" data-i18n="snd_noise_name">Розовый шум</div>
+                <div class="sound-desc" data-i18n="snd_noise_desc">Маскировка внешних отвлекающих звуков</div>
+              </div>
+            </div>
+            <div class="sound-toggle-switch"><div class="sound-toggle-knob"></div></div>
+          </div>
+          <div class="volume-slider-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            <input type="range" class="slider-vol" min="0" max="1" step="0.01" value="0.4">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <aside class="sidebar-column">
+      
+      <div class="timer-card">
+        <div class="timer-title-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="timer_title">Таймер глубокой концентрации</span>
+        </div>
+        <div class="timer-digits" id="timer-display">25:00</div>
+        <div class="timer-pills-row">
+          <button class="timer-pill-btn active" data-time="1500">25 мин</button>
+          <button class="timer-pill-btn" data-time="3000">50 мин</button>
+          <button class="timer-pill-btn" data-time="300">5 мин</button>
+        </div>
+        <div class="timer-actions">
+          <button class="btn-timer-toggle" id="btn-timer-start">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span id="timer-toggle-label" data-i18n="timer_start">Старт</span>
+          </button>
+          <button class="btn-timer-reset" id="btn-timer-reset" data-i18n="timer_reset">Сброс</button>
+        </div>
+      </div>
+
+      <div class="binaural-card">
+        <div class="binaural-title-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          <span data-i18n="binaural_title">Бинауральные ритмы</span>
+        </div>
+        <p class="binaural-desc" data-i18n="binaural_hint">Наденьте наушники: правое и левое ухо получают слегка разные частоты для синхронизации полушарий мозга.</p>
+        <div class="wave-selector-grid">
+          <button class="wave-btn active" data-wave="none">
+            Выкл
+            <span>Стандарт</span>
+          </button>
+          <button class="wave-btn" data-wave="alpha">
+            Альфа (10 Гц)
+            <span>Релакс & Обучение</span>
+          </button>
+          <button class="wave-btn" data-wave="beta">
+            Бета (18 Гц)
+            <span>Пиковый фокус</span>
+          </button>
+          <button class="wave-btn" data-wave="theta">
+            Тета (6 Гц)
+            <span>Медитация & Сон</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ad-sidebar-box">
+        <span class="ad-micro-tag" data-i18n="ad_sponsor">СПОНСОРСКАЯ РЕКЛАМА</span>
+        <div class="ad-iframe-holder">
+          <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <div class="ad-banner-zone">
+    <div class="ad-banner-box">
+      <span class="ad-micro-tag" data-i18n="ad_sponsor">СПОНСОРСКАЯ РЕКЛАМА</span>
+      <div class="ad-iframe-holder">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-info-section">
+    <div class="seo-bento-grid">
+      <article class="seo-card">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--accent-secondary);"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span data-i18n="seo_card1_title">Как звуковая терапия усиливает концентрацию и сон</span>
+        </h2>
+        <p data-i18n="seo_card1_text">
+          AuraFlow генерирует акустические ландшафты, выравнивающие частоты фонового шума. В отличие от тяжелой музыки со словами, природные паттерны дождя, прибоя и розового шума активируют парасимпатическую нервную систему, снижая кортизол и помогая войти в состояние «потока» (flow state).
+        </p>
+        <div class="seo-features-list">
+          <div class="seo-feature-box">
+            <strong data-i18n="seo_f1_title">Плавный синтез Web Audio</strong>
+            <span data-i18n="seo_f1_desc">Чистый звук без повторяющихся слышимых швов лупов</span>
+          </div>
+          <div class="seo-feature-box">
+            <strong data-i18n="seo_f2_title">Метод Помодоро</strong>
+            <span data-i18n="seo_f2_desc">Встроенный таймер для чередования спринтов и отдыха</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="seo-card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--accent-secondary);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span data-i18n="seo_card2_title">Развитие экосистемы</span>
+        </h3>
+        <p data-i18n="seo_card2_text">
+          Все инструменты создаются студией Alexcdraft Studios бесплатно для сообщества разработчиков, дизайнеров и фрилансеров. Вы можете поддержать наши разработки на платформе Boosty!
+        </p>
+        <button onclick="openBoostySupport()" class="btn-boosty-action" style="margin-top:auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span data-i18n="support_author_btn">Страница поддержки автора</span>
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <div class="support-banner-overlay" id="support-waterfall-overlay">
+    <div class="waterfall-col-left">
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="waterfall-col-right">
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+      <div class="waterfall-ad-card">
+        <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="support-modal-center">
+      <button class="btn-waterfall-close" onclick="closeBoostySupport()" aria-label="Закрыть">&times;</button>
+      <div class="support-modal-header">
+        <img src="icon.png" class="support-modal-icon" width="48" height="48" style="width:48px;height:48px;border-radius:12px;object-fit:cover;display:block;" alt="Alexcdraft Studios">
+        <div>
+          <h3 class="support-modal-title">Alexcdraft Studios</h3>
+          <span class="support-modal-sub">Steam моды • Сайты • Игры</span>
+        </div>
+      </div>
+      <p class="support-modal-text">
+        Привет! Я основатель <strong>Alexcdraft Studios</strong>. Создаю модификации в Steam Workshop, разрабатываю полезные веб-инструменты для геймдева и повседневной продуктивности, а также прямо сейчас работаю над собственными играми.
+      </p>
+      <p class="support-modal-note">
+        Здесь вы можете поддержать мои проекты разовым донатом или подпиской. Ваша поддержка ускоряет выход новых сайтов, обновлений для модов и релиз моих игр!
+      </p>
+      <a href="https://boosty.to/vostguy/donate" target="_blank" rel="noopener noreferrer" class="btn-boosty-action">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <span>Поддержать на Boosty</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer-bar">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <span>AuraFlow • Интерактивный генератор звуковой атмосферы для продуктивности</span>
+      </div>
+      <div class="footer-signature">
+        <span>Создано</span> <strong>Alexcdraft Studios</strong>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+(function() {
+  const i18n = {
+    ru: {
+      support_btn: "Поддержать Boosty",
+      theme_dark: "Тёмная",
+      theme_light: "Светлая",
+      ad_sponsor: "СПОНСОРСКАЯ РЕКЛАМА",
+      hero_title: "Звуковая сфера релаксации",
+      hero_sub: "Синтез аудиоволн в реальном времени с интерактивным визуализатором",
+      play_all: "Включить атмосферу",
+      pause_all: "Приостановить",
+      presets_title: "Готовые миксы:",
+      preset_rain: "Уютный дождь",
+      preset_forest: "Ночной лес",
+      preset_zen: "Глубокий дзен",
+      preset_study: "Учеба и фокус",
+      snd_rain_name: "Летний дождь",
+      snd_rain_desc: "Капли по листьям и крыше",
+      snd_ocean_name: "Морской прибой",
+      snd_ocean_desc: "Плавные накатывающие волны",
+      snd_fire_name: "Ночной костёр",
+      snd_fire_desc: "Потрескивание сухих дров",
+      snd_wind_name: "Горный ветер",
+      snd_wind_desc: "Мягкий шелест кроны деревьев",
+      snd_forest_name: "Птицы и сверчки",
+      snd_forest_desc: "Живая ночная природа",
+      snd_noise_name: "Розовый шум",
+      snd_noise_desc: "Маскировка внешних отвлекающих звуков",
+      timer_title: "Таймер глубокой концентрации",
+      timer_start: "Старт",
+      timer_pause: "Пауза",
+      timer_reset: "Сброс",
+      binaural_title: "Бинауральные ритмы",
+      binaural_hint: "Наденьте наушники: правое и левое ухо получают слегка разные частоты для синхронизации полушарий мозга.",
+      seo_card1_title: "Как звуковая терапия усиливает концентрацию и сон",
+      seo_card1_text: "AuraFlow генерирует акустические ландшафты, выравнивающие частоты фонового шума. В отличие от тяжелой музыки со словами, природные паттерны дождя, прибоя и розового шума активируют парасимпатическую нервную систему, снижая кортизол и помогая войти в состояние потока.",
+      seo_f1_title: "Плавный синтез Web Audio",
+      seo_f1_desc: "Чистый звук без повторяющихся слышимых швов лупов",
+      seo_f2_title: "Метод Помодоро",
+      seo_f2_desc: "Встроенный таймер для чередования спринтов и отдыха",
+      seo_card2_title: "Развитие экосистемы",
+      seo_card2_text: "Все инструменты создаются студией Alexcdraft Studios бесплатно для сообщества разработчиков, дизайнеров и фрилансеров. Вы можете поддержать наши разработки на платформе Boosty!",
+      support_author_btn: "Страница поддержки автора"
+    },
+    en: {
+      support_btn: "Support Boosty",
+      theme_dark: "Dark",
+      theme_light: "Light",
+      ad_sponsor: "SPONSORED ADVERTISEMENT",
+      hero_title: "Sound Relaxation Sphere",
+      hero_sub: "Real-time procedural audio synthesis with an interactive organic visualizer",
+      play_all: "Play Atmosphere",
+      pause_all: "Pause All",
+      presets_title: "Curated Mixes:",
+      preset_rain: "Cozy Rain",
+      preset_forest: "Night Forest",
+      preset_zen: "Deep Zen",
+      preset_study: "Deep Focus",
+      snd_rain_name: "Summer Rain",
+      snd_rain_desc: "Gentle drops on autumn leaves",
+      snd_ocean_name: "Ocean Surf",
+      snd_ocean_desc: "Rhythmic rolling coastal waves",
+      snd_fire_name: "Campfire Glow",
+      snd_fire_desc: "Crackling warm hearth embers",
+      snd_wind_name: "Mountain Breeze",
+      snd_wind_desc: "Soft whispers through high pines",
+      snd_forest_name: "Night Birds & Crickets",
+      snd_forest_desc: "Peaceful twilight woodland fauna",
+      snd_noise_name: "Pink Noise",
+      snd_noise_desc: "Blocks ambient room distractions",
+      timer_title: "Deep Focus Pomodoro Timer",
+      timer_start: "Start",
+      timer_pause: "Pause",
+      timer_reset: "Reset",
+      binaural_title: "Binaural Brainwaves",
+      binaural_hint: "Wear stereo headphones: slightly offset frequencies synchronize cerebral hemispheres for effortless calm.",
+      seo_card1_title: "How Acoustic Environments Enhance Focus & Rest",
+      seo_card1_text: "AuraFlow procedurally shapes natural acoustic spectrums. Free from distracting lyrical cues, organic audio masks intrusive background noise and stimulates tranquil alpha/theta state alignment.",
+      seo_f1_title: "Procedural Web Audio",
+      seo_f1_desc: "Zero repetitive loop seams or stuttering audio buffers",
+      seo_f2_title: "Pomodoro Rhythm",
+      seo_f2_desc: "Integrated intervals for sustainable deep productivity",
+      seo_card2_title: "Ecosystem Growth",
+      seo_card2_text: "Every tool is handcrafted by Alexcdraft Studios freely for creators, engineers and indie gamers worldwide. Support our journey on Boosty!",
+      support_author_btn: "Support Creator on Boosty"
+    }
+  };
+
+  let currentLang = 'ru';
+  let audioCtx = null;
+  let masterGain = null;
+  let isPlaying = false;
+  let analyser = null;
+  let animFrameId = null;
+
+  const soundNodes = {
+    rain: { active: false, gain: null, node: null, vol: 0.7 },
+    waves: { active: false, gain: null, node: null, vol: 0.6 },
+    fire: { active: false, gain: null, node: null, vol: 0.65 },
+    wind: { active: false, gain: null, node: null, vol: 0.5 },
+    forest: { active: false, gain: null, node: null, vol: 0.55 },
+    whitenoise: { active: false, gain: null, node: null, vol: 0.4 }
+  };
+
+  let binauralNodes = {
+    leftOsc: null,
+    rightOsc: null,
+    gain: null,
+    currentType: 'none'
+  };
+
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioCtxClass();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 64;
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(1.0, audioCtx.currentTime);
+      masterGain.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function createNoiseBuffer(ctx, duration = 4) {
+    const bufferSize = ctx.sampleRate * duration;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      output[i] = Math.random() * 2 - 1;
+    }
+    return buffer;
+  }
+
+  function startRainSound(ctx) {
+    const src = ctx.createBufferSource();
+    src.buffer = createNoiseBuffer(ctx, 4);
+    src.loop = true;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1100;
+
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.rain.vol;
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+    src.start();
+
+    return { src, gain };
+  }
+
+  function startWavesSound(ctx) {
+    const src = ctx.createBufferSource();
+    src.buffer = createNoiseBuffer(ctx, 6);
+    src.loop = true;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 450;
+    filter.Q.value = 2.5;
+
+    const lfo = ctx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.12;
+
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 350;
+    lfo.connect(lfoGain);
+    lfoGain.connect(filter.frequency);
+    lfo.start();
+
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.waves.vol;
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+    src.start();
+
+    return { src, lfo, gain };
+  }
+
+  function startFireSound(ctx) {
+    const src = ctx.createBufferSource();
+    src.buffer = createNoiseBuffer(ctx, 3);
+    src.loop = true;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 800;
+
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.fire.vol;
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+    src.start();
+
+    const crackleInterval = setInterval(() => {
+      if (!soundNodes.fire.active) {
+        clearInterval(crackleInterval);
+        return;
+      }
+      if (Math.random() > 0.45) {
+        const osc = ctx.createOscillator();
+        const oscGain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = 180 + Math.random() * 320;
+        oscGain.gain.setValueAtTime(0.001, ctx.currentTime);
+        oscGain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.01);
+        oscGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.06);
+        osc.connect(oscGain);
+        oscGain.connect(masterGain);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.07);
+      }
+    }, 180);
+
+    return { src, gain, crackleInterval };
+  }
+
+  function startWindSound(ctx) {
+    const src = ctx.createBufferSource();
+    src.buffer = createNoiseBuffer(ctx, 5);
+    src.loop = true;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 300;
+
+    const lfo = ctx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 0.08;
+
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 220;
+    lfo.connect(lfoGain);
+    lfoGain.connect(filter.frequency);
+    lfo.start();
+
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.wind.vol;
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+    src.start();
+
+    return { src, lfo, gain };
+  }
+
+  function startForestSound(ctx) {
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.forest.vol;
+    gain.connect(masterGain);
+
+    const chirpInterval = setInterval(() => {
+      if (!soundNodes.forest.active) {
+        clearInterval(chirpInterval);
+        return;
+      }
+      if (Math.random() > 0.4) {
+        const osc = ctx.createOscillator();
+        const chirpGain = ctx.createGain();
+        osc.type = 'sine';
+        const baseFreq = 2200 + Math.random() * 800;
+        osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq + 600, ctx.currentTime + 0.08);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq - 300, ctx.currentTime + 0.16);
+
+        chirpGain.gain.setValueAtTime(0.001, ctx.currentTime);
+        chirpGain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 0.03);
+        chirpGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+
+        osc.connect(chirpGain);
+        chirpGain.connect(gain);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.19);
+      }
+    }, 700);
+
+    return { gain, chirpInterval };
+  }
+
+  function startWhiteNoise(ctx) {
+    const src = ctx.createBufferSource();
+    src.buffer = createNoiseBuffer(ctx, 4);
+    src.loop = true;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 750;
+
+    const gain = ctx.createGain();
+    gain.gain.value = soundNodes.whitenoise.vol;
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+    src.start();
+
+    return { src, gain };
+  }
+
+  function toggleSound(soundName, forceState = null) {
+    const ctx = getAudioContext();
+    const sound = soundNodes[soundName];
+    const newState = forceState !== null ? forceState : !sound.active;
+    sound.active = newState;
+
+    const card = document.querySelector(`.sound-card[data-sound="${soundName}"]`);
+    if (card) {
+      if (newState) card.classList.add('active');
+      else card.classList.remove('active');
+    }
+
+    if (newState) {
+      if (!sound.node) {
+        if (soundName === 'rain') sound.node = startRainSound(ctx);
+        else if (soundName === 'waves') sound.node = startWavesSound(ctx);
+        else if (soundName === 'fire') sound.node = startFireSound(ctx);
+        else if (soundName === 'wind') sound.node = startWindSound(ctx);
+        else if (soundName === 'forest') sound.node = startForestSound(ctx);
+        else if (soundName === 'whitenoise') sound.node = startWhiteNoise(ctx);
+      }
+      isPlaying = true;
+      updateMasterButtonUI();
+    } else {
+      if (sound.node) {
+        try {
+          if (sound.node.src) sound.node.src.stop();
+          if (sound.node.lfo) sound.node.lfo.stop();
+          if (sound.node.crackleInterval) clearInterval(sound.node.crackleInterval);
+          if (sound.node.chirpInterval) clearInterval(sound.node.chirpInterval);
+        } catch(e) {}
+        sound.node = null;
+      }
+      checkIfAnyPlaying();
+    }
+  }
+
+  function setBinauralBeats(type) {
+    const ctx = getAudioContext();
+    if (binauralNodes.leftOsc) {
+      try {
+        binauralNodes.leftOsc.stop();
+        binauralNodes.rightOsc.stop();
+      } catch(e) {}
+      binauralNodes.leftOsc = null;
+      binauralNodes.rightOsc = null;
+    }
+
+    binauralNodes.currentType = type;
+    document.querySelectorAll('.wave-btn').forEach(btn => {
+      if (btn.getAttribute('data-wave') === type) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+
+    if (type === 'none') return;
+
+    let baseFreq = 200;
+    let diff = 10;
+    if (type === 'alpha') diff = 10;
+    else if (type === 'beta') diff = 18;
+    else if (type === 'theta') diff = 6;
+
+    const merger = ctx.createChannelMerger(2);
+    const leftOsc = ctx.createOscillator();
+    const rightOsc = ctx.createOscillator();
+
+    leftOsc.type = 'sine';
+    leftOsc.frequency.value = baseFreq;
+
+    rightOsc.type = 'sine';
+    rightOsc.frequency.value = baseFreq + diff;
+
+    const gain = ctx.createGain();
+    gain.gain.value = 0.15;
+
+    leftOsc.connect(merger, 0, 0);
+    rightOsc.connect(merger, 0, 1);
+    merger.connect(gain);
+    gain.connect(masterGain);
+
+    leftOsc.start();
+    rightOsc.start();
+
+    binauralNodes.leftOsc = leftOsc;
+    binauralNodes.rightOsc = rightOsc;
+    binauralNodes.gain = gain;
+
+    isPlaying = true;
+    updateMasterButtonUI();
+  }
+
+  function checkIfAnyPlaying() {
+    let any = false;
+    for (const key in soundNodes) {
+      if (soundNodes[key].active) any = true;
+    }
+    if (binauralNodes.currentType !== 'none') any = true;
+    isPlaying = any;
+    updateMasterButtonUI();
+  }
+
+  function updateMasterButtonUI() {
+    const iconPlay = document.getElementById('master-icon-play');
+    const iconPause = document.getElementById('master-icon-pause');
+    const label = document.getElementById('master-btn-text');
+    if (isPlaying) {
+      iconPlay.style.display = 'none';
+      iconPause.style.display = 'block';
+      label.textContent = i18n[currentLang].pause_all;
+    } else {
+      iconPlay.style.display = 'block';
+      iconPause.style.display = 'none';
+      label.textContent = i18n[currentLang].play_all;
+    }
+  }
+
+  function setPreset(presetName) {
+    document.querySelectorAll('.preset-chip-btn').forEach(btn => {
+      if (btn.getAttribute('data-preset') === presetName) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+
+    for (const key in soundNodes) {
+      toggleSound(key, false);
+    }
+
+    if (presetName === 'rain') {
+      toggleSound('rain', true);
+      toggleSound('wind', true);
+      setBinauralBeats('alpha');
+    } else if (presetName === 'night') {
+      toggleSound('fire', true);
+      toggleSound('forest', true);
+      setBinauralBeats('theta');
+    } else if (presetName === 'meditation') {
+      toggleSound('waves', true);
+      toggleSound('wind', true);
+      setBinauralBeats('theta');
+    } else if (presetName === 'study') {
+      toggleSound('rain', true);
+      toggleSound('whitenoise', true);
+      setBinauralBeats('beta');
+    }
+  }
+
+  function initVisualizer() {
+    const canvas = document.getElementById('visual-canvas');
+    const ctx2d = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let angle = 0;
+    function draw() {
+      animFrameId = requestAnimationFrame(draw);
+      ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+
+      let energy = 0.2;
+      if (analyser && isPlaying) {
+        const data = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(data);
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) sum += data[i];
+        energy = 0.2 + (sum / data.length / 255) * 1.5;
+      }
+
+      angle += 0.02;
+      const numRings = 5;
+      for (let r = 1; r <= numRings; r++) {
+        ctx2d.beginPath();
+        const baseRadius = r * 16 + energy * 20;
+        ctx2d.arc(cx, cy, Math.max(5, baseRadius + Math.sin(angle * r) * 6), 0, Math.PI * 2);
+        ctx2d.strokeStyle = `rgba(20, 184, 166, ${0.15 + (r / numRings) * 0.4})`;
+        ctx2d.lineWidth = 1.5;
+        ctx2d.stroke();
+      }
+
+      const grad = ctx2d.createRadialGradient(cx, cy, 2, cx, cy, 35 * energy);
+      grad.addColorStop(0, 'rgba(20, 184, 166, 0.9)');
+      grad.addColorStop(0.6, 'rgba(13, 148, 136, 0.4)');
+      grad.addColorStop(1, 'rgba(9, 13, 22, 0)');
+      ctx2d.fillStyle = grad;
+      ctx2d.beginPath();
+      ctx2d.arc(cx, cy, 35 * energy, 0, Math.PI * 2);
+      ctx2d.fill();
+    }
+    draw();
+  }
+
+  let timerSeconds = 1500;
+  let timerInterval = null;
+  let timerRunning = false;
+
+  function updateTimerDisplay() {
+    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const secs = (timerSeconds % 60).toString().padStart(2, '0');
+    document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+  }
+
+  function initTimer() {
+    updateTimerDisplay();
+
+    document.querySelectorAll('.timer-pill-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.timer-pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        timerSeconds = parseInt(btn.getAttribute('data-time'), 10);
+        if (timerRunning) {
+          clearInterval(timerInterval);
+          timerRunning = false;
+          document.getElementById('timer-toggle-label').textContent = i18n[currentLang].timer_start;
+        }
+        updateTimerDisplay();
+      });
+    });
+
+    document.getElementById('btn-timer-start').addEventListener('click', () => {
+      if (!timerRunning) {
+        timerRunning = true;
+        document.getElementById('timer-toggle-label').textContent = i18n[currentLang].timer_pause;
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timer-toggle-label').textContent = i18n[currentLang].timer_start;
+            alert(currentLang === 'ru' ? 'Сессия завершена! Сделайте паузу.' : 'Session completed! Take a break.');
+          }
+        }, 1000);
+      } else {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timer-toggle-label').textContent = i18n[currentLang].timer_start;
+      }
+    });
+
+    document.getElementById('btn-timer-reset').addEventListener('click', () => {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      document.getElementById('timer-toggle-label').textContent = i18n[currentLang].timer_start;
+      const activeBtn = document.querySelector('.timer-pill-btn.active');
+      timerSeconds = activeBtn ? parseInt(activeBtn.getAttribute('data-time'), 10) : 1500;
+      updateTimerDisplay();
+    });
+  }
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    const texts = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (texts[key]) el.textContent = texts[key];
+    });
+    updateMasterButtonUI();
+  }
+
+  function init() {
+    initVisualizer();
+    initTimer();
+
+    document.getElementById('btn-master-toggle').addEventListener('click', () => {
+      const ctx = getAudioContext();
+      if (isPlaying) {
+        for (const key in soundNodes) {
+          if (soundNodes[key].active) toggleSound(key, false);
+        }
+        setBinauralBeats('none');
+      } else {
+        setPreset('rain');
+      }
+    });
+
+    let isMuted = false;
+    document.getElementById('btn-mute-all').addEventListener('click', () => {
+      const ctx = getAudioContext();
+      isMuted = !isMuted;
+      masterGain.gain.setValueAtTime(isMuted ? 0 : 1.0, ctx.currentTime);
+    });
+
+    document.querySelectorAll('.sound-card').forEach(card => {
+      const soundKey = card.getAttribute('data-sound');
+      const toggleSwitch = card.querySelector('.sound-toggle-switch');
+      const slider = card.querySelector('.slider-vol');
+
+      toggleSwitch.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSound(soundKey);
+      });
+
+      card.addEventListener('click', (e) => {
+        if (e.target !== slider) {
+          toggleSound(soundKey);
+        }
+      });
+
+      slider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const val = parseFloat(e.target.value);
+        soundNodes[soundKey].vol = val;
+        if (soundNodes[soundKey].node && soundNodes[soundKey].node.gain) {
+          soundNodes[soundKey].node.gain.gain.value = val;
+        }
+      });
+    });
+
+    document.querySelectorAll('.preset-chip-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setPreset(btn.getAttribute('data-preset'));
+      });
+    });
+
+    document.querySelectorAll('.wave-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setBinauralBeats(btn.getAttribute('data-wave'));
+      });
+    });
+
+    document.getElementById('btn-theme-dark').addEventListener('click', () => {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('btn-theme-dark').classList.add('active');
+      document.getElementById('btn-theme-light').classList.remove('active');
+    });
+
+    document.getElementById('btn-theme-light').addEventListener('click', () => {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.getElementById('btn-theme-light').classList.add('active');
+      document.getElementById('btn-theme-dark').classList.remove('active');
+    });
+
+    document.getElementById('btn-lang-ru').addEventListener('click', () => {
+      document.getElementById('btn-lang-ru').classList.add('active');
+      document.getElementById('btn-lang-en').classList.remove('active');
+      applyLanguage('ru');
+    });
+
+    document.getElementById('btn-lang-en').addEventListener('click', () => {
+      document.getElementById('btn-lang-en').classList.add('active');
+      document.getElementById('btn-lang-ru').classList.remove('active');
+      applyLanguage('en');
+    });
+
+    window.openBoostySupport = function() {
+      const overlay = document.getElementById('support-waterfall-overlay');
+      if (overlay) overlay.classList.add('active');
+    };
+
+    window.closeBoostySupport = function() {
+      const overlay = document.getElementById('support-waterfall-overlay');
+      if (overlay) overlay.classList.remove('active');
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>
