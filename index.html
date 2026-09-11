@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber Match: Neon Gems — Игра Три в ряд онлайн бесплатно | Alexcdraft Studios</title>
-  <meta name="description" content="Красочная и динамичная игра Три в ряд (Match 3) онлайн. Собирайте неоновые кристаллы, взрывайте комбо, активируйте лазерные бомбы и побеждайте уровни без рекламы и доната. Alexcdraft Studios.">
-  <meta name="keywords" content="три в ряд онлайн, игра три в ряд играть бесплатно, match 3 game, головоломка с кристаллами, jewel match, неоновые кристаллы три в ряд, alexcdraft studios">
+  <title>Neon Runner 2088 — Киберпанк аркада в реальном времени | Alexcdraft Studios</title>
+  <meta name="description" content="Динамичная реал-тайм экшен-игра Neon Runner 2088. Управляйте кибер-истребителем в неоновом гипертуннеле, уворачивайтесь от лазерных барьеров, собирайте кристаллы и соревнуйтесь за рекорд. Alexcdraft Studios.">
+  <meta name="keywords" content="neon runner, киберпанк игра онлайн, бесконечный раннер, космическая аркада онлайн, браузерная игра в реальном времени, webgl игра, alexcdraft studios">
   <meta name="author" content="Alexcdraft Studios">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://auraflow.netlify.app/">
+  <link rel="canonical" href="https://auraflow-one.vercel.app/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cyber Match: Neon Gems — Игра Три в ряд онлайн">
-  <meta property="og:description" content="Взрывные комбинации, неоновые кристаллы и каскады очков прямо в браузере.">
+  <meta property="og:title" content="Neon Runner 2088 — Киберпанк аркада онлайн">
+  <meta property="og:description" content="Скоростной 3D раннер в реальном времени с неоновой физикой и приятным ретро-звуком.">
   <meta property="og:image" content="icon.png">
 
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoGame",
-    "name": "Cyber Match: Neon Gems",
-    "description": "Fast-paced, vibrant neon match-3 puzzle game with cascades and super bombs.",
-    "genre": ["Puzzle", "Match 3", "Casual"],
+    "name": "Neon Runner 2088",
+    "description": "High-speed real-time cyberpunk space runner game built with WebGL and Web Audio API.",
+    "genre": ["Action", "Arcade", "Runner"],
     "gamePlatform": "Web Browser",
     "applicationCategory": "Game",
     "operatingSystem": "Any",
@@ -40,37 +40,25 @@
 
   <style>
 :root, [data-theme="dark"] {
-  --bg-main: #0c0817;
-  --bg-board: #150f28;
-  --bg-card: rgba(21, 15, 40, 0.85);
-  --border-neon: #a855f7;
-  --text-main: #f8fafc;
-  --text-dim: #c084fc;
-  --accent-cyan: #06b6d4;
-  --accent-gold: #fbbf24;
-  --accent-pink: #f43f5e;
-  --gem-ruby: #ef4444;
-  --gem-sapphire: #06b6d4;
-  --gem-emerald: #10b981;
-  --gem-amethyst: #a855f7;
-  --gem-topaz: #f59e0b;
+  --neon-cyan: #06b6d4;
+  --neon-magenta: #d946ef;
+  --neon-amber: #f59e0b;
+  --bg-deep: #06040d;
+  --bg-hud: rgba(13, 9, 26, 0.85);
+  --border-neon: rgba(6, 182, 212, 0.4);
+  --text-bright: #ffffff;
+  --text-muted: #a78bfa;
 }
 
 [data-theme="light"] {
-  --bg-main: #faf5ff;
-  --bg-board: #f3e8ff;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --border-neon: #9333ea;
-  --text-main: #3b0764;
-  --text-dim: #7e22ce;
-  --accent-cyan: #0284c7;
-  --accent-gold: #d97706;
-  --accent-pink: #e11d48;
-  --gem-ruby: #dc2626;
-  --gem-sapphire: #0284c7;
-  --gem-emerald: #059669;
-  --gem-amethyst: #7c3aed;
-  --gem-topaz: #d97706;
+  --neon-cyan: #0284c7;
+  --neon-magenta: #c026d3;
+  --neon-amber: #d97706;
+  --bg-deep: #f8fafc;
+  --bg-hud: rgba(255, 255, 255, 0.9);
+  --border-neon: rgba(2, 132, 199, 0.35);
+  --text-bright: #0f172a;
+  --text-muted: #64748b;
 }
 
 * {
@@ -81,8 +69,8 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  background: var(--bg-deep);
+  color: var(--text-bright);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -90,346 +78,315 @@ body {
   user-select: none;
 }
 
-.match-header-bar {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--border-neon);
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
-  padding: 8px 24px;
+.wing-ad-left, .wing-ad-right {
+  position: fixed;
+  top: 90px;
+  width: 170px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.wing-ad-left {
+  left: 16px;
+}
+
+.wing-ad-right {
+  right: 16px;
+}
+
+.wing-ad-card {
+  background: var(--bg-hud);
+  border: 1px solid var(--border-neon);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.wing-ad-tag {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.wing-ad-card iframe {
+  width: 100% !important;
+  height: 90px !important;
+  border: 0;
+  display: block;
+}
+
+.hud-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: var(--bg-hud);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border-neon);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+  padding: 8px 24px;
 }
 
-.header-inner-row {
-  max-width: 1440px;
+.header-core {
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.brand-gem-anchor {
+.flight-brand {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
 }
 
-.gem-icon-circle {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+.ship-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 2px solid var(--border-neon);
-  box-shadow: 0 0 16px var(--border-neon);
-  flex-shrink: 0;
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan);
 }
 
-.gem-icon-circle img {
+.ship-badge img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.brand-gem-text {
+.brand-label-box {
   display: flex;
   flex-direction: column;
 }
 
-.brand-game-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+.brand-flight-title {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.25rem;
   font-weight: 900;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #c084fc, #38bdf8);
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1.1;
+  line-height: 1;
 }
 
-.brand-game-sub {
-  font-size: 0.7rem;
+.brand-flight-sub {
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
-.nav-cluster-right {
+.pilot-nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.gem-boosty-btn {
+.btn-boosty-pilot {
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: #fff;
   border: none;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 0.8rem;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.78rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.5);
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.gem-boosty-btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.6);
+.btn-boosty-pilot:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(249, 115, 22, 0.8);
 }
 
-.gem-pill-box {
+.mode-switches {
   display: flex;
-  background: rgba(168, 85, 247, 0.15);
+  background: rgba(0,0,0,0.3);
   border: 1px solid var(--border-neon);
-  border-radius: 20px;
-  padding: 3px;
-  gap: 2px;
+  border-radius: 8px;
+  padding: 2px;
 }
 
-.gem-pill-btn {
+.mode-btn {
   background: transparent;
   border: none;
-  color: var(--text-dim);
-  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
   font-weight: 800;
-  padding: 5px 12px;
-  border-radius: 16px;
+  padding: 4px 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.gem-pill-btn.active {
-  background: var(--border-neon);
+.mode-btn.active {
+  background: var(--neon-cyan);
   color: #fff;
-  box-shadow: 0 0 10px var(--border-neon);
 }
 
-.ad-banner-strip {
-  max-width: 1440px;
-  margin: 10px auto 0 auto;
-  padding: 0 24px;
+.flight-arena-viewport {
+  max-width: 900px;
   width: 100%;
-}
-
-.ad-card-slot {
-  background: var(--bg-card);
-  border: 1px solid var(--border-neon);
-  border-radius: 16px;
-  padding: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 94px;
-}
-
-.ad-tag-label {
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-
-.game-stage-area {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 16px 24px 30px 24px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 280px 1fr 280px;
-  gap: 24px;
-  align-items: start;
-}
-
-.status-hud-card {
-  background: var(--bg-card);
-  border: 2px solid var(--border-neon);
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.2);
-}
-
-.hud-banner-badge {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.3));
-  border: 1px solid var(--accent-cyan);
-  border-radius: 14px;
-  padding: 14px;
-  text-align: center;
-}
-
-.hud-sub-label {
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: var(--accent-cyan);
-  text-transform: uppercase;
-}
-
-.hud-big-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #fff;
-  text-shadow: 0 0 14px var(--accent-cyan);
-}
-
-.hud-metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.metric-pill {
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  border-radius: 12px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.metric-title {
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  font-weight: 700;
-}
-
-.metric-val {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--accent-gold);
-}
-
-.match-board-wrapper {
-  background: var(--bg-board);
-  border: 3px solid var(--border-neon);
-  border-radius: 24px;
-  padding: 20px;
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.3), inset 0 0 40px rgba(0,0,0,0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  min-height: 520px;
-}
-
-.board-grid-8x8 {
-  display: grid;
-  grid-template-columns: repeat(8, 54px);
-  grid-template-rows: repeat(8, 54px);
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 12px;
-  border-radius: 16px;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.gem-cell {
-  width: 54px;
-  height: 54px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+  margin: 16px auto 0 auto;
+  padding: 0 20px;
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
 }
 
-.gem-cell:hover {
-  transform: scale(1.1);
-  z-index: 5;
+.arena-board-shell {
+  background: #000;
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.gem-cell.selected {
-  transform: scale(1.18);
-  border: 2px solid #fff;
-  box-shadow: 0 0 20px #fff, 0 0 35px var(--accent-gold);
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.flight-stats-overlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
   z-index: 10;
-  animation: pulseGem 1s infinite alternate;
 }
 
-@keyframes pulseGem {
-  0% { transform: scale(1.15); }
-  100% { transform: scale(1.22); }
+.hud-stat-box {
+  background: rgba(13, 9, 26, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-neon);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
 }
 
-.btn-shuffle-board {
-  background: linear-gradient(135deg, var(--border-neon), #7c3aed);
+.overlay-center-banner {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 4, 13, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 20;
+}
+
+.start-title-big {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.start-hint-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 460px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.btn-launch-flight {
+  background: linear-gradient(135deg, var(--neon-cyan), #0284c7);
   color: #fff;
   border: none;
-  border-radius: 14px;
-  padding: 12px 28px;
-  font-size: 0.9rem;
-  font-weight: 800;
+  border-radius: 12px;
+  padding: 14px 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
   transition: all 0.2s ease;
 }
 
-.btn-shuffle-board:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.6);
+.btn-launch-flight:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.9);
 }
 
-.bonuses-hud-card {
-  background: var(--bg-card);
-  border: 2px solid var(--border-neon);
-  border-radius: 20px;
-  padding: 20px;
+.mobile-flight-controls {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 16px;
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.2);
+  margin-top: 14px;
 }
 
-.bonus-box {
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  border-radius: 14px;
-  padding: 12px;
+.mobile-steer-btn {
+  background: var(--bg-hud);
+  border: 1px solid var(--border-neon);
+  color: #fff;
+  border-radius: 12px;
+  width: 90px;
+  height: 54px;
+  font-size: 1.4rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-.bonus-icon {
-  font-size: 1.8rem;
+.mobile-steer-btn:active {
+  background: var(--neon-cyan);
 }
 
-.bonus-info-title {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--accent-cyan);
+.bottom-banner-slot {
+  max-width: 900px;
+  margin: 16px auto 30px auto;
+  padding: 0 20px;
+  width: 100%;
 }
 
-.bonus-info-sub {
-  font-size: 0.72rem;
-  color: var(--text-dim);
+.bottom-ad-card {
+  background: var(--bg-hud);
+  border: 1px solid var(--border-neon);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
 }
 
 .support-banner-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   overflow: hidden;
   display: none;
@@ -460,7 +417,7 @@ body {
 }
 
 .waterfall-ad-card {
-  background: var(--bg-board);
+  background: #0d091a;
   border: 1px solid rgba(249, 115, 22, 0.5);
   border-radius: 14px;
   padding: 10px;
@@ -482,13 +439,13 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100001;
-  background: var(--bg-board);
-  border: 2px solid var(--border-neon);
-  border-radius: 24px;
-  padding: 28px;
+  background: #0d091a;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 20px;
+  padding: 26px;
   max-width: 480px;
   width: calc(100% - 40px);
-  box-shadow: 0 0 50px rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 50px rgba(6, 182, 212, 0.5);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -497,33 +454,33 @@ body {
 .support-modal-header {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .support-modal-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--border-neon);
+  border-radius: 10px;
+  border: 1px solid var(--neon-cyan);
   object-fit: cover;
   display: block;
 }
 
 .support-modal-title {
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 900;
   color: #fff;
 }
 
 .support-modal-sub {
-  font-size: 0.76rem;
-  color: var(--text-dim);
-  font-weight: 600;
+  font-size: 0.72rem;
+  color: var(--neon-cyan);
+  font-weight: 700;
 }
 
 .support-modal-text {
   font-size: 0.84rem;
-  color: var(--text-main);
+  color: #cbd5e1;
   line-height: 1.6;
 }
 
@@ -531,24 +488,23 @@ body {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(255,255,255,0.1);
+  background: transparent;
   border: 1px solid var(--border-neon);
-  color: var(--text-main);
-  width: 32px;
-  height: 32px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
 }
 
 .btn-boosty-action {
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: #fff;
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 14px 20px;
   font-size: 0.92rem;
   font-weight: 800;
@@ -559,180 +515,142 @@ body {
 }
 
 .footer-bar {
-  border-top: 1px solid rgba(168, 85, 247, 0.2);
-  background: var(--bg-card);
-  padding: 16px 24px;
+  border-top: 1px solid rgba(6, 182, 212, 0.2);
+  background: var(--bg-hud);
+  padding: 14px 24px;
   margin-top: auto;
 }
 
 .footer-inner {
-  max-width: 1440px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
-@media (max-width: 1200px) {
-  .waterfall-col-left, .waterfall-col-right {
+@media (max-width: 1300px) {
+  .wing-ad-left, .wing-ad-right {
     display: none;
-  }
-}
-
-@media (max-width: 980px) {
-  .game-stage-area {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .board-grid-8x8 {
-    grid-template-columns: repeat(8, 38px);
-    grid-template-rows: repeat(8, 38px);
-    gap: 4px;
-    padding: 8px;
-  }
-  .gem-cell {
-    width: 38px;
-    height: 38px;
-    font-size: 1.25rem;
   }
 }
   </style>
 </head>
 <body>
 
-  <header class="match-header-bar">
-    <div class="header-inner-row">
-      <a href="#" class="brand-gem-anchor">
-        <div class="gem-icon-circle">
-          <img src="icon.png" width="44" height="44" alt="Cyber Match">
+  <div class="wing-ad-left">
+    <div class="wing-ad-card">
+      <div class="wing-ad-tag">SPONSOR // 01</div>
+      <iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe>
+    </div>
+    <div class="wing-ad-card">
+      <div class="wing-ad-tag">SPONSOR // 02</div>
+      <iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="wing-ad-right">
+    <div class="wing-ad-card">
+      <div class="wing-ad-tag">SPONSOR // 03</div>
+      <iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe>
+    </div>
+    <div class="wing-ad-card">
+      <div class="wing-ad-tag">SPONSOR // 04</div>
+      <iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <header class="hud-header">
+    <div class="header-core">
+      <a href="#" class="flight-brand">
+        <div class="ship-badge">
+          <img src="icon.png" width="42" height="42" alt="Neon Runner">
         </div>
-        <div class="brand-gem-text">
-          <span class="brand-game-title">CYBER MATCH</span>
-          <span class="brand-game-sub">NEON GEMS • ALEXCDRAFT STUDIOS</span>
+        <div class="brand-label-box">
+          <span class="brand-flight-title">NEON RUNNER 2088</span>
+          <span class="brand-flight-sub">ALEXCDRAFT STUDIOS // REAL-TIME ARCADE</span>
         </div>
       </a>
 
-      <div class="nav-cluster-right">
-        <button onclick="openBoostySupport()" class="gem-boosty-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <div class="pilot-nav-actions">
+        <button onclick="openBoostySupport()" class="btn-boosty-pilot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           <span data-i18n="support_btn">Поддержать Boosty</span>
         </button>
 
-        <div class="gem-pill-box">
-          <button class="gem-pill-btn active" id="btn-theme-dark">Тёмная</button>
-          <button class="gem-pill-btn" id="btn-theme-light">Светлая</button>
+        <div class="mode-switches">
+          <button class="mode-btn active" id="btn-theme-dark">DRK</button>
+          <button class="mode-btn" id="btn-theme-light">LGT</button>
         </div>
 
-        <div class="gem-pill-box">
-          <button class="gem-pill-btn active" id="btn-lang-ru">RU</button>
-          <button class="gem-pill-btn" id="btn-lang-en">EN</button>
+        <div class="mode-switches">
+          <button class="mode-btn active" id="btn-lang-ru">RU</button>
+          <button class="mode-btn" id="btn-lang-en">EN</button>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="ad-banner-strip">
-    <div class="ad-card-slot">
-      <span class="ad-tag-label" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
-      <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
-    </div>
-  </div>
-
-  <main class="game-stage-area">
+  <main class="flight-arena-viewport">
     
-    <aside class="status-hud-card">
-      <div class="hud-banner-badge">
-        <div class="hud-sub-label" data-i18n="label_level">Уровень 1</div>
-        <div class="hud-big-num" id="display-score">0</div>
-        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:4px;"><span data-i18n="label_target">Цель:</span> <strong id="display-target">1000</strong></div>
+    <div class="arena-board-shell">
+      <div class="flight-stats-overlay">
+        <div class="hud-stat-box"><span data-i18n="score_label">ДИСТАНЦИЯ:</span> <span id="val-score" style="color:var(--neon-cyan);">0</span> м</div>
+        <div class="hud-stat-box"><span data-i18n="crystals_label">КРИСТАЛЛЫ:</span> <span id="val-crystals" style="color:var(--neon-amber);">0</span> 💎</div>
+        <div class="hud-stat-box"><span data-i18n="speed_label">СКОРОСТЬ:</span> <span id="val-speed" style="color:var(--neon-magenta);">1.0x</span></div>
       </div>
 
-      <div class="hud-metrics-grid">
-        <div class="metric-pill">
-          <span class="metric-title" data-i18n="label_moves">Ходов</span>
-          <span class="metric-val" id="display-moves">25</span>
-        </div>
-        <div class="metric-pill">
-          <span class="metric-title" data-i18n="label_combo">Комбо</span>
-          <span class="metric-val" id="display-combo">x1</span>
-        </div>
+      <canvas id="game-canvas" width="860" height="484"></canvas>
+
+      <div class="overlay-center-banner" id="start-banner">
+        <div class="start-title-big">NEON RUNNER 2088</div>
+        <p class="start-hint-text" data-i18n="hint_controls">Управляйте кораблем: стрелки [←] [→] или [A] [D] / Свайпы на телефоне. Уворачивайтесь от неоновых преград и собирайте кристаллы!</p>
+        <button class="btn-launch-flight" id="btn-start-game" data-i18n="launch_btn">НАЧАТЬ ПОЛЁТ</button>
       </div>
-    </aside>
+    </div>
 
-    <section class="match-board-wrapper">
-      <div class="board-grid-8x8" id="board-element"></div>
-      <button class="btn-shuffle-board" id="btn-shuffle-board" data-i18n="btn_restart">Перемешать кристаллы</button>
-    </section>
-
-    <aside class="bonuses-hud-card">
-      <div style="font-size:0.88rem;font-weight:800;color:var(--text-main);" data-i18n="rules_title">Как играть:</div>
-
-      <div class="bonus-box">
-        <div class="bonus-icon">💎</div>
-        <div>
-          <div class="bonus-info-title" data-i18n="rule1_title">Линия из 3</div>
-          <div class="bonus-info-sub" data-i18n="rule1_desc">Меняйте соседние кристаллы местами для сбора линии</div>
-        </div>
-      </div>
-
-      <div class="bonus-box">
-        <div class="bonus-icon">⚡</div>
-        <div>
-          <div class="bonus-info-title" data-i18n="rule2_title">Каскады комбо</div>
-          <div class="bonus-info-sub" data-i18n="rule2_desc">Кристаллы падают сверху, создавая цепные реакции</div>
-        </div>
-      </div>
-
-      <div class="bonus-box">
-        <div class="bonus-icon">👑</div>
-        <div>
-          <div class="bonus-info-title">Alexcdraft Studios</div>
-          <div class="bonus-info-sub" data-i18n="rule3_desc">Поддержите новые игры и моды студии на Boosty!</div>
-        </div>
-      </div>
-    </aside>
+    <div class="mobile-flight-controls">
+      <button class="mobile-steer-btn" id="btn-steer-left">◀</button>
+      <button class="mobile-steer-btn" id="btn-steer-right">▶</button>
+    </div>
 
   </main>
 
-  <div class="ad-banner-strip">
-    <div class="ad-card-slot">
-      <span class="ad-tag-label" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
-      <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
+  <div class="bottom-banner-slot">
+    <div class="bottom-ad-card">
+      <div class="wing-ad-tag">SPONSORED PROMO // A-ADS</div>
+      <iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
     </div>
   </div>
 
   <div class="support-banner-overlay" id="support-waterfall-overlay">
     <div class="waterfall-col-left">
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe></div>
     </div>
     <div class="waterfall-col-right">
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455018" src="//acceptable.a-ads.com/2455018/?size=Adaptive" loading="lazy"></iframe></div>
     </div>
     <div class="support-modal-center">
       <button class="btn-waterfall-close" onclick="closeBoostySupport()" aria-label="Закрыть">&times;</button>
       <div class="support-modal-header">
         <img src="icon.png" class="support-modal-icon" width="48" height="48" alt="Alexcdraft Studios">
         <div>
-          <h3 class="support-modal-title">Alexcdraft Studios</h3>
-          <span class="support-modal-sub">Инди-игры • Сайты • Моды</span>
+          <div class="support-modal-title">Alexcdraft Studios</div>
+          <div class="support-modal-sub">Инди-игры • Моды • Веб-сервисы</div>
         </div>
       </div>
-      <p class="support-modal-text">Привет! Я разработчик инди-игр и веб-инструментов. Поддержка на Boosty помогает развивать проекты и радовать новыми релизами!</p>
+      <p class="support-modal-text">Привет! Я основатель студии Alexcdraft Studios. Создаю оригинальные игры, модификации и веб-проекты. Поддержка на Boosty мотивирует делать еще больше качественного контента!</p>
       <a href="https://boosty.to/vostguy/donate" target="_blank" rel="noopener noreferrer" class="btn-boosty-action">Поддержать на Boosty</a>
     </div>
   </div>
 
   <footer class="footer-bar">
     <div class="footer-inner">
-      <span>Cyber Match: Neon Gems • Онлайн игра Три в ряд</span>
+      <span>Neon Runner 2088 • Высокоскоростная аркада в реальном времени</span>
       <div><span>Создано</span> <strong>Alexcdraft Studios</strong></div>
     </div>
   </footer>
@@ -742,261 +660,271 @@ body {
   const i18n = {
     ru: {
       support_btn: "Поддержать Boosty",
-      ad_tag: "СПОНСОРСКАЯ РЕКЛАМА",
-      label_level: "Уровень 1",
-      label_target: "Цель:",
-      label_moves: "Ходов",
-      label_combo: "Комбо",
-      btn_restart: "Перемешать кристаллы",
-      rules_title: "Как играть:",
-      rule1_title: "Линия из 3",
-      rule1_desc: "Меняйте соседние кристаллы местами для сбора линии",
-      rule2_title: "Каскады комбо",
-      rule2_desc: "Кристаллы падают сверху, создавая цепные реакции",
-      rule3_desc: "Поддержите новые игры и моды студии на Boosty!"
+      score_label: "ДИСТАНЦИЯ:",
+      crystals_label: "КРИСТАЛЛЫ:",
+      speed_label: "СКОРОСТЬ:",
+      hint_controls: "Управление: стрелки [←] [→] или [A] [D] / Кнопки внизу на телефоне. Уворачивайтесь от преград и собирайте кристаллы!",
+      launch_btn: "НАЧАТЬ ПОЛЁТ",
+      game_over: "КОРАБЛЬ УНИЧТОЖЕН! Дистанция: "
     },
     en: {
       support_btn: "Support Boosty",
-      ad_tag: "SPONSORED ADVERTISEMENT",
-      label_level: "Level 1",
-      label_target: "Goal:",
-      label_moves: "Moves",
-      label_combo: "Combo",
-      btn_restart: "Shuffle Board",
-      rules_title: "How to Play:",
-      rule1_title: "Line of 3",
-      rule1_desc: "Swap adjacent crystals to create horizontal or vertical lines",
-      rule2_title: "Cascading Combos",
-      rule2_desc: "Gems fall from above, triggering automatic chain multiplier reactions",
-      rule3_desc: "Support our indie games and workshop mods on Boosty!"
+      score_label: "DISTANCE:",
+      crystals_label: "CRYSTALS:",
+      speed_label: "SPEED:",
+      hint_controls: "Controls: [←] [→] or [A] [D] keys / Touch buttons on mobile. Evade laser barriers and harvest energy crystals!",
+      launch_btn: "LAUNCH FLIGHT",
+      game_over: "HULL DESTROYED! Distance: "
     }
   };
 
   let currentLang = 'ru';
-  const GEMS = ['💎', '🔮', '🟢', '🔥', '⭐'];
-  const ROWS = 8;
-  const COLS = 8;
-  let board = [];
-  let selected = null;
+  let audioCtx = null;
+
+  function getAudioCtx() {
+    if (!audioCtx) {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioClass();
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function playSoftBeep(freq, type = 'sine', duration = 0.08, gainVal = 0.06) {
+    try {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  function playLaserCrash() {
+    try {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(140, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.3);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.3);
+    } catch(e) {}
+  }
+
+  const canvas = document.getElementById('game-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let isPlaying = false;
   let score = 0;
-  let moves = 25;
-  let target = 1000;
-  let combo = 1;
+  let crystals = 0;
+  let speed = 1.0;
+  let playerX = canvas.width / 2;
+  const playerY = canvas.height - 60;
+  let moveDir = 0;
 
-  function initBoard() {
-    board = [];
-    for (let r = 0; r < ROWS; r++) {
-      board[r] = [];
-      for (let c = 0; c < COLS; c++) {
-        board[r][c] = getRandomGemExcluding(r, c);
+  let obstacles = [];
+  let pickups = [];
+  let stars = [];
+  let animId = null;
+
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < 70; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5,
+        speed: Math.random() * 2 + 1
+      });
+    }
+  }
+
+  function spawnEntities() {
+    if (Math.random() < 0.035 * speed) {
+      const w = 70 + Math.random() * 50;
+      obstacles.push({
+        x: Math.random() * (canvas.width - w),
+        y: -30,
+        w: w,
+        h: 18,
+        color: '#f43f5e'
+      });
+    }
+
+    if (Math.random() < 0.025) {
+      pickups.push({
+        x: 30 + Math.random() * (canvas.width - 60),
+        y: -20,
+        r: 10,
+        color: '#f59e0b'
+      });
+    }
+  }
+
+  function gameLoop() {
+    if (!isPlaying) return;
+
+    ctx.fillStyle = '#06040d';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    stars.forEach(s => {
+      s.y += s.speed * speed * 1.5;
+      if (s.y > canvas.height) {
+        s.y = 0;
+        s.x = Math.random() * canvas.width;
       }
-    }
-  }
+      ctx.fillRect(s.x, s.y, s.size, s.size);
+    });
 
-  function getRandomGemExcluding(r, c) {
-    let choices = [...GEMS];
-    if (c >= 2 && board[r][c-1] === board[r][c-2]) {
-      choices = choices.filter(g => g !== board[r][c-1]);
-    }
-    if (r >= 2 && board[r-1][c] === board[r-2][c]) {
-      choices = choices.filter(g => g !== board[r-1][c]);
-    }
-    return choices[Math.floor(Math.random() * choices.length)];
-  }
+    playerX += moveDir * 7 * speed;
+    playerX = Math.max(30, Math.min(canvas.width - 30, playerX));
 
-  function renderBoard() {
-    const el = document.getElementById('board-element');
-    el.innerHTML = '';
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        const cell = document.createElement('div');
-        cell.className = 'gem-cell';
-        if (selected && selected.r === r && selected.c === c) {
-          cell.classList.add('selected');
-        }
-        cell.textContent = board[r][c];
-        cell.addEventListener('click', () => handleCellClick(r, c));
-        el.appendChild(cell);
-      }
-    }
-  }
+    ctx.save();
+    ctx.translate(playerX, playerY);
 
-  function handleCellClick(r, c) {
-    if (moves <= 0) return;
-    if (!selected) {
-      selected = { r, c };
-      renderBoard();
-    } else {
-      if (selected.r === r && selected.c === c) {
-        selected = null;
-        renderBoard();
+    ctx.fillStyle = '#06b6d4';
+    ctx.shadowColor = '#06b6d4';
+    ctx.shadowBlur = 16;
+    ctx.beginPath();
+    ctx.moveTo(0, -22);
+    ctx.lineTo(18, 14);
+    ctx.lineTo(0, 8);
+    ctx.lineTo(-18, 14);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = '#d946ef';
+    ctx.beginPath();
+    ctx.arc(0, 10, 4 + Math.random() * 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    for (let i = obstacles.length - 1; i >= 0; i--) {
+      const o = obstacles[i];
+      o.y += 4 * speed;
+
+      ctx.fillStyle = o.color;
+      ctx.shadowColor = o.color;
+      ctx.shadowBlur = 12;
+      ctx.fillRect(o.x, o.y, o.w, o.h);
+
+      if (
+        playerX > o.x - 12 &&
+        playerX < o.x + o.w + 12 &&
+        playerY > o.y - 12 &&
+        playerY < o.y + o.h + 12
+      ) {
+        gameOver();
         return;
       }
 
-      const isAdjacent = (Math.abs(selected.r - r) === 1 && selected.c === c) ||
-                         (Math.abs(selected.c - c) === 1 && selected.r === r);
-
-      if (isAdjacent) {
-        swap(selected.r, selected.c, r, c);
-        const matches = findMatches();
-        if (matches.length > 0) {
-          moves--;
-          selected = null;
-          combo = 1;
-          processMatches(matches);
-        } else {
-          swap(selected.r, selected.c, r, c);
-          selected = null;
-          renderBoard();
-        }
-      } else {
-        selected = { r, c };
-        renderBoard();
-      }
+      if (o.y > canvas.height + 30) obstacles.splice(i, 1);
     }
-  }
 
-  function swap(r1, c1, r2, c2) {
-    const temp = board[r1][c1];
-    board[r1][c1] = board[r2][c2];
-    board[r2][c2] = temp;
-  }
+    for (let i = pickups.length - 1; i >= 0; i--) {
+      const p = pickups[i];
+      p.y += 3.5 * speed;
 
-  function findMatches() {
-    const matched = new Set();
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 14;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
 
-    for (let r = 0; r < ROWS; r++) {
-      let matchLen = 1;
-      for (let c = 0; c < COLS; c++) {
-        const checkNext = c < COLS - 1 && board[r][c] === board[r][c+1] && board[r][c] !== '';
-        if (checkNext) {
-          matchLen++;
-        } else {
-          if (matchLen >= 3) {
-            for (let i = 0; i < matchLen; i++) {
-              matched.add(`${r},${c - i}`);
-            }
-          }
-          matchLen = 1;
-        }
+      const dx = playerX - p.x;
+      const dy = playerY - p.y;
+      if (Math.hypot(dx, dy) < 26) {
+        crystals++;
+        score += 50;
+        playSoftBeep(880, 'sine', 0.09, 0.08);
+        pickups.splice(i, 1);
+      } else if (p.y > canvas.height + 30) {
+        pickups.splice(i, 1);
       }
     }
 
-    for (let c = 0; c < COLS; c++) {
-      let matchLen = 1;
-      for (let r = 0; r < ROWS; r++) {
-        const checkNext = r < ROWS - 1 && board[r][c] === board[r+1][c] && board[r][c] !== '';
-        if (checkNext) {
-          matchLen++;
-        } else {
-          if (matchLen >= 3) {
-            for (let i = 0; i < matchLen; i++) {
-              matched.add(`${r - i},${c}`);
-            }
-          }
-          matchLen = 1;
-        }
-      }
-    }
+    score += Math.floor(speed);
+    speed = 1.0 + Math.min(3.5, score / 1200);
 
-    return Array.from(matched).map(s => {
-      const [r, c] = s.split(',').map(Number);
-      return { r, c };
-    });
+    document.getElementById('val-score').textContent = score;
+    document.getElementById('val-crystals').textContent = crystals;
+    document.getElementById('val-speed').textContent = speed.toFixed(1) + 'x';
+
+    spawnEntities();
+    animId = requestAnimationFrame(gameLoop);
   }
 
-  function processMatches(matches) {
-    const earned = matches.length * 10 * combo;
-    score += earned;
-    matches.forEach(m => {
-      board[m.r][m.c] = '';
-    });
-    updateHUD();
-    renderBoard();
-
-    setTimeout(() => {
-      dropGems();
-      renderBoard();
-
-      setTimeout(() => {
-        const nextMatches = findMatches();
-        if (nextMatches.length > 0) {
-          combo++;
-          processMatches(nextMatches);
-        } else {
-          checkGameStatus();
-        }
-      }, 200);
-    }, 200);
+  function startGame() {
+    score = 0;
+    crystals = 0;
+    speed = 1.0;
+    obstacles = [];
+    pickups = [];
+    playerX = canvas.width / 2;
+    isPlaying = true;
+    document.getElementById('start-banner').style.display = 'none';
+    playSoftBeep(523.25, 'triangle', 0.15, 0.1);
+    initStars();
+    gameLoop();
   }
 
-  function dropGems() {
-    for (let c = 0; c < COLS; c++) {
-      let emptyRow = ROWS - 1;
-      for (let r = ROWS - 1; r >= 0; r--) {
-        if (board[r][c] !== '') {
-          if (emptyRow !== r) {
-            board[emptyRow][c] = board[r][c];
-            board[r][c] = '';
-          }
-          emptyRow--;
-        }
-      }
-      for (let r = emptyRow; r >= 0; r--) {
-        board[r][c] = GEMS[Math.floor(Math.random() * GEMS.length)];
-      }
-    }
-  }
-
-  function checkGameStatus() {
-    updateHUD();
-    if (score >= target) {
-      setTimeout(() => {
-        alert(currentLang === 'ru' ? 'ПОБЕДА! Уровень пройден!' : 'VICTORY! Level completed!');
-        target += 800;
-        moves += 15;
-        initBoard();
-        renderBoard();
-        updateHUD();
-      }, 250);
-    } else if (moves <= 0) {
-      setTimeout(() => {
-        alert(currentLang === 'ru' ? 'ХОДЫ ЗАКОНЧИЛИСЬ! Начните заново.' : 'GAME OVER! Out of moves.');
-        score = 0;
-        moves = 25;
-        target = 1000;
-        initBoard();
-        renderBoard();
-        updateHUD();
-      }, 250);
-    }
-  }
-
-  function updateHUD() {
-    document.getElementById('display-score').textContent = score;
-    document.getElementById('display-moves').textContent = moves;
-    document.getElementById('display-target').textContent = target;
-    document.getElementById('display-combo').textContent = 'x' + combo;
-  }
-
-  function applyLang(lang) {
-    currentLang = lang;
-    const texts = i18n[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (texts[key]) el.textContent = texts[key];
-    });
+  function gameOver() {
+    isPlaying = false;
+    cancelAnimationFrame(animId);
+    playLaserCrash();
+    document.getElementById('start-banner').style.display = 'flex';
+    document.querySelector('.start-title-big').textContent = 'GAME OVER';
+    document.getElementById('btn-start-game').textContent = currentLang === 'ru' ? 'ИГРАТЬ СНОВА' : 'PLAY AGAIN';
+    alert(i18n[currentLang].game_over + score + ' м');
   }
 
   function init() {
-    initBoard();
-    renderBoard();
-    updateHUD();
+    initStars();
 
-    document.getElementById('btn-shuffle-board').addEventListener('click', () => {
-      initBoard();
-      renderBoard();
+    document.getElementById('btn-start-game').addEventListener('click', startGame);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') moveDir = -1;
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') moveDir = 1;
     });
+
+    window.addEventListener('keyup', (e) => {
+      if (
+        (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') && moveDir === -1 ||
+        (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') && moveDir === 1
+      ) {
+        moveDir = 0;
+      }
+    });
+
+    const btnL = document.getElementById('btn-steer-left');
+    const btnR = document.getElementById('btn-steer-right');
+
+    btnL.addEventListener('touchstart', () => moveDir = -1);
+    btnL.addEventListener('touchend', () => moveDir = 0);
+    btnL.addEventListener('mousedown', () => moveDir = -1);
+    btnL.addEventListener('mouseup', () => moveDir = 0);
+
+    btnR.addEventListener('touchstart', () => moveDir = 1);
+    btnR.addEventListener('touchend', () => moveDir = 0);
+    btnR.addEventListener('mousedown', () => moveDir = 1);
+    btnR.addEventListener('mouseup', () => moveDir = 0);
 
     document.getElementById('btn-theme-dark').addEventListener('click', () => {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -1013,12 +941,14 @@ body {
     document.getElementById('btn-lang-ru').addEventListener('click', () => {
       document.getElementById('btn-lang-ru').classList.add('active');
       document.getElementById('btn-lang-en').classList.remove('active');
+      currentLang = 'ru';
       applyLang('ru');
     });
 
     document.getElementById('btn-lang-en').addEventListener('click', () => {
       document.getElementById('btn-lang-en').classList.add('active');
       document.getElementById('btn-lang-ru').classList.remove('active');
+      currentLang = 'en';
       applyLang('en');
     });
 
@@ -1031,6 +961,14 @@ body {
       const overlay = document.getElementById('support-waterfall-overlay');
       if (overlay) overlay.classList.remove('active');
     };
+  }
+
+  function applyLang(lang) {
+    const texts = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (texts[key]) el.textContent = texts[key];
+    });
   }
 
   if (document.readyState === 'loading') {
