@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neon Deck: Cyber Roguelike — Карточный покер-рогалик онлайн | Alexcdraft Studios</title>
-  <meta name="description" content="Бесплатный карточный рогалик в стиле Balatro и неонового киберпанка. Собирайте покерные комбинации, улучшайте множители Multiplier, побеждайте босс-блайнды и выигрывайте фишки без реальных денег. Alexcdraft Studios.">
-  <meta name="keywords" content="карточный рогалик онлайн, balatro играть онлайн, покер рогалик, roguelike deckbuilder, neon deck, cyber cards, бесплатная игра в карты, покерные комбинации, alexcdraft studios">
+  <title>Cyber Match: Neon Gems — Игра Три в ряд онлайн бесплатно | Alexcdraft Studios</title>
+  <meta name="description" content="Красочная и динамичная игра Три в ряд (Match 3) онлайн. Собирайте неоновые кристаллы, взрывайте комбо, активируйте лазерные бомбы и побеждайте уровни без рекламы и доната. Alexcdraft Studios.">
+  <meta name="keywords" content="три в ряд онлайн, игра три в ряд играть бесплатно, match 3 game, головоломка с кристаллами, jewel match, неоновые кристаллы три в ряд, alexcdraft studios">
   <meta name="author" content="Alexcdraft Studios">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://auraflow.netlify.app/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Neon Deck: Cyber Roguelike — Карточный покер-рогалик онлайн">
-  <meta property="og:description" content="Комбинируйте карты, множители и прокачивайте колоду в неоновом покерном рогалике. Бесплатно без регистрации.">
+  <meta property="og:title" content="Cyber Match: Neon Gems — Игра Три в ряд онлайн">
+  <meta property="og:description" content="Взрывные комбинации, неоновые кристаллы и каскады очков прямо в браузере.">
   <meta property="og:image" content="icon.png">
 
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoGame",
-    "name": "Neon Deck: Cyber Roguelike",
-    "description": "Tactical deckbuilding poker roguelike with neon aesthetics, chip multipliers and boss blinds.",
-    "genre": ["Roguelike", "Card Game", "Strategy"],
+    "name": "Cyber Match: Neon Gems",
+    "description": "Fast-paced, vibrant neon match-3 puzzle game with cascades and super bombs.",
+    "genre": ["Puzzle", "Match 3", "Casual"],
     "gamePlatform": "Web Browser",
     "applicationCategory": "Game",
     "operatingSystem": "Any",
@@ -40,47 +40,37 @@
 
   <style>
 :root, [data-theme="dark"] {
-  --bg-base: #0a0614;
-  --bg-surface: #120b22;
-  --bg-card: rgba(26, 17, 48, 0.75);
-  --bg-card-solid: #1b1233;
-  --bg-card-hover: rgba(43, 27, 79, 0.9);
-  --bg-control: #261647;
-  --border: rgba(168, 85, 247, 0.2);
-  --border-glow: rgba(168, 85, 247, 0.5);
-  --text-main: #f5f3ff;
-  --text-dim: #a78bfa;
-  --text-muted: #7c3aed;
-  --accent-purple: #a855f7;
+  --bg-main: #0c0817;
+  --bg-board: #150f28;
+  --bg-card: rgba(21, 15, 40, 0.85);
+  --border-neon: #a855f7;
+  --text-main: #f8fafc;
+  --text-dim: #c084fc;
   --accent-cyan: #06b6d4;
   --accent-gold: #fbbf24;
-  --accent-red: #f43f5e;
-  --accent-green: #10b981;
-  --card-radius: 14px;
-  --panel-blur: blur(14px);
-  --glow-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  --accent-pink: #f43f5e;
+  --gem-ruby: #ef4444;
+  --gem-sapphire: #06b6d4;
+  --gem-emerald: #10b981;
+  --gem-amethyst: #a855f7;
+  --gem-topaz: #f59e0b;
 }
 
 [data-theme="light"] {
-  --bg-base: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-card: rgba(241, 245, 249, 0.9);
-  --bg-card-solid: #ffffff;
-  --bg-card-hover: #ede9fe;
-  --bg-control: #e2e8f0;
-  --border: rgba(124, 58, 237, 0.2);
-  --border-glow: rgba(124, 58, 237, 0.5);
-  --text-main: #1e1b4b;
-  --text-dim: #6d28d9;
-  --text-muted: #8b5cf6;
-  --accent-purple: #7c3aed;
+  --bg-main: #faf5ff;
+  --bg-board: #f3e8ff;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --border-neon: #9333ea;
+  --text-main: #3b0764;
+  --text-dim: #7e22ce;
   --accent-cyan: #0284c7;
   --accent-gold: #d97706;
-  --accent-red: #e11d48;
-  --accent-green: #059669;
-  --card-radius: 14px;
-  --panel-blur: blur(14px);
-  --glow-shadow: 0 4px 18px rgba(124, 58, 237, 0.18);
+  --accent-pink: #e11d48;
+  --gem-ruby: #dc2626;
+  --gem-sapphire: #0284c7;
+  --gem-emerald: #059669;
+  --gem-amethyst: #7c3aed;
+  --gem-topaz: #d97706;
 }
 
 * {
@@ -90,133 +80,132 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-base);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-main);
   color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  transition: background 0.25s ease, color 0.25s ease;
+  user-select: none;
 }
 
-.game-header {
+.match-header-bar {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border-neon);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+  padding: 8px 24px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--bg-card);
-  backdrop-filter: var(--panel-blur);
-  -webkit-backdrop-filter: var(--panel-blur);
-  border-bottom: 1px solid var(--border);
-  padding: 10px 24px;
 }
 
-.header-inner {
+.header-inner-row {
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
-.brand-wrapper {
+.brand-gem-anchor {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: inherit;
 }
 
-.brand-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+.gem-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 1px solid var(--border-glow);
-  box-shadow: var(--glow-shadow);
+  border: 2px solid var(--border-neon);
+  box-shadow: 0 0 16px var(--border-neon);
   flex-shrink: 0;
 }
 
-.brand-img {
-  width: 40px;
-  height: 40px;
+.gem-icon-circle img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.brand-name {
-  font-size: 1.2rem;
+.brand-gem-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-game-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
   font-weight: 900;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #c084fc, #38bdf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 1.1;
 }
 
-.brand-sub {
-  font-size: 0.72rem;
-  color: var(--text-dim);
+.brand-game-sub {
+  font-size: 0.7rem;
   font-weight: 700;
+  color: var(--text-dim);
 }
 
-.header-right {
+.nav-cluster-right {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.btn-boosty-neon {
+.gem-boosty-btn {
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: #fff;
   border: none;
-  border-radius: 9px;
-  padding: 7px 14px;
+  border-radius: 20px;
+  padding: 8px 18px;
   font-size: 0.8rem;
   font-weight: 800;
   cursor: pointer;
-  display: inline-flex;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+  display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
-  transition: all 0.2s ease;
-  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.btn-boosty-neon:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.6);
+.gem-boosty-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.6);
 }
 
-.pill-group {
+.gem-pill-box {
   display: flex;
-  background: var(--bg-control);
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid var(--border-neon);
+  border-radius: 20px;
   padding: 3px;
-  border-radius: 9999px;
-  border: 1px solid var(--border);
   gap: 2px;
 }
 
-.pill-btn {
+.gem-pill-btn {
   background: transparent;
   border: none;
   color: var(--text-dim);
+  font-size: 0.74rem;
+  font-weight: 800;
   padding: 5px 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  border-radius: 9999px;
+  border-radius: 16px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.15s ease;
 }
 
-.pill-btn.active {
-  background: var(--bg-card-solid);
-  color: var(--text-main);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+.gem-pill-btn.active {
+  background: var(--border-neon);
+  color: #fff;
+  box-shadow: 0 0 10px var(--border-neon);
 }
 
 .ad-banner-strip {
@@ -226,111 +215,82 @@ body {
   width: 100%;
 }
 
-.ad-box {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
+.ad-card-slot {
+  background: var(--bg-card);
+  border: 1px solid var(--border-neon);
+  border-radius: 16px;
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 94px;
-  overflow: hidden;
 }
 
-.ad-tag {
+.ad-tag-label {
   font-size: 0.65rem;
   font-weight: 800;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
+  color: var(--text-dim);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
 
-.game-arena {
+.game-stage-area {
   max-width: 1440px;
   margin: 0 auto;
   padding: 16px 24px 30px 24px;
   width: 100%;
   display: grid;
-  grid-template-columns: 290px 1fr 290px;
-  gap: 20px;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 24px;
+  align-items: start;
 }
 
-.hud-panel {
+.status-hud-card {
   background: var(--bg-card);
-  backdrop-filter: var(--panel-blur);
-  -webkit-backdrop-filter: var(--panel-blur);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 18px;
+  border: 2px solid var(--border-neon);
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: var(--glow-shadow);
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.2);
 }
 
-.hud-section-title {
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--accent-purple);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.blind-badge {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(168, 85, 247, 0.2));
-  border: 1px solid var(--accent-red);
-  border-radius: 12px;
+.hud-banner-badge {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.3));
+  border: 1px solid var(--accent-cyan);
+  border-radius: 14px;
   padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   text-align: center;
 }
 
-.blind-title {
-  font-size: 0.82rem;
+.hud-sub-label {
+  font-size: 0.76rem;
   font-weight: 800;
-  color: var(--accent-red);
+  color: var(--accent-cyan);
+  text-transform: uppercase;
 }
 
-.blind-score-target {
+.hud-big-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #fff;
+  text-shadow: 0 0 14px var(--accent-cyan);
 }
 
-.progress-bar-wrap {
-  width: 100%;
-  height: 8px;
-  background: var(--bg-control);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-  transition: width 0.3s ease;
-}
-
-.stats-grid {
+.hud-metrics-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.stat-box {
-  background: var(--bg-control);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+.metric-pill {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 12px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -338,320 +298,139 @@ body {
   gap: 2px;
 }
 
-.stat-label {
+.metric-title {
   font-size: 0.7rem;
   color: var(--text-dim);
   font-weight: 700;
 }
 
-.stat-value {
+.metric-val {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--accent-gold);
 }
 
-.table-center {
+.match-board-wrapper {
+  background: var(--bg-board);
+  border: 3px solid var(--border-neon);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.3), inset 0 0 40px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
+  min-height: 520px;
 }
 
-.score-display-box {
-  background: var(--bg-card);
-  backdrop-filter: var(--panel-blur);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.board-grid-8x8 {
+  display: grid;
+  grid-template-columns: repeat(8, 54px);
+  grid-template-rows: repeat(8, 54px);
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
-.calc-formula-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.calc-chip-blue {
-  background: rgba(6, 182, 212, 0.18);
-  border: 1px solid var(--accent-cyan);
-  color: var(--accent-cyan);
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 1.1rem;
-}
-
-.calc-mult-sign {
-  font-weight: 900;
-  color: var(--text-dim);
-  font-size: 1.2rem;
-}
-
-.calc-chip-red {
-  background: rgba(244, 63, 94, 0.18);
-  border: 1px solid var(--accent-red);
-  color: var(--accent-red);
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 1.1rem;
-}
-
-.hand-combo-name {
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: var(--accent-gold);
-}
-
-.cards-hand-table {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px 16px;
-  min-height: 250px;
+.gem-cell {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  position: relative;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
-}
-
-.playing-card {
-  width: 96px;
-  height: 140px;
-  background: #ffffff;
-  color: #111827;
-  border-radius: 12px;
-  border: 2px solid rgba(255,255,255,0.4);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 8px;
+  font-size: 1.8rem;
   cursor: pointer;
-  user-select: none;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.playing-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 24px var(--accent-purple);
+.gem-cell:hover {
+  transform: scale(1.1);
+  z-index: 5;
 }
 
-.playing-card.selected {
-  transform: translateY(-22px) scale(1.05);
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 25px var(--accent-gold);
+.gem-cell.selected {
+  transform: scale(1.18);
+  border: 2px solid #fff;
+  box-shadow: 0 0 20px #fff, 0 0 35px var(--accent-gold);
+  z-index: 10;
+  animation: pulseGem 1s infinite alternate;
 }
 
-.card-corner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
+@keyframes pulseGem {
+  0% { transform: scale(1.15); }
+  100% { transform: scale(1.22); }
 }
 
-.card-rank {
-  font-size: 1.1rem;
-  font-weight: 800;
-}
-
-.card-suit {
-  font-size: 0.95rem;
-}
-
-.card-center-icon {
-  align-self: center;
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-.playing-card.red {
-  color: #dc2626;
-}
-
-.playing-card.black {
-  color: #111827;
-}
-
-.action-bar-row {
-  display: flex;
-  gap: 12px;
-}
-
-.btn-play-hand {
-  flex: 2;
-  background: linear-gradient(135deg, var(--accent-purple), #9333ea);
+.btn-shuffle-board {
+  background: linear-gradient(135deg, var(--border-neon), #7c3aed);
   color: #fff;
   border: none;
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 1rem;
-  font-weight: 900;
+  border-radius: 14px;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 800;
   cursor: pointer;
   box-shadow: 0 4px 18px rgba(168, 85, 247, 0.4);
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
+  transition: all 0.2s ease;
 }
 
-.btn-play-hand:hover:not(:disabled) {
+.btn-shuffle-board:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 24px rgba(168, 85, 247, 0.6);
 }
 
-.btn-play-hand:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn-discard-hand {
-  flex: 1;
-  background: var(--bg-control);
-  border: 1px solid var(--border);
-  color: var(--text-main);
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 0.95rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-discard-hand:hover:not(:disabled) {
-  background: var(--accent-red);
-  color: #fff;
-  border-color: var(--accent-red);
-}
-
-.shop-panel {
+.bonuses-hud-card {
   background: var(--bg-card);
-  backdrop-filter: var(--panel-blur);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 18px;
+  border: 2px solid var(--border-neon);
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  box-shadow: var(--glow-shadow);
+  gap: 16px;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.2);
 }
 
-.joker-card {
-  background: var(--bg-control);
-  border: 1px solid var(--border-glow);
-  border-radius: 12px;
+.bonus-box {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 14px;
   padding: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.joker-card:hover {
-  border-color: var(--accent-cyan);
-}
-
-.joker-header {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
 }
 
-.joker-name {
-  font-size: 0.85rem;
+.bonus-icon {
+  font-size: 1.8rem;
+}
+
+.bonus-info-title {
+  font-size: 0.82rem;
   font-weight: 800;
   color: var(--accent-cyan);
 }
 
-.joker-cost {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--accent-gold);
-}
-
-.joker-desc {
-  font-size: 0.74rem;
+.bonus-info-sub {
+  font-size: 0.72rem;
   color: var(--text-dim);
-  line-height: 1.4;
-}
-
-.btn-buy-joker {
-  background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  cursor: pointer;
-  align-self: flex-start;
-  margin-top: 4px;
-  transition: all 0.15s ease;
-}
-
-.btn-buy-joker:hover:not(:disabled) {
-  transform: scale(1.05);
-}
-
-.btn-buy-joker:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.seo-guide-section {
-  max-width: 1440px;
-  margin: 10px auto 40px auto;
-  padding: 0 24px;
-  width: 100%;
-}
-
-.seo-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-.seo-box {
-  background: var(--bg-card);
-  backdrop-filter: var(--panel-blur);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.seo-box h2, .seo-box h3 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--text-main);
-}
-
-.seo-box p {
-  font-size: 0.84rem;
-  color: var(--text-dim);
-  line-height: 1.6;
 }
 
 .support-banner-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   display: none;
 }
@@ -672,14 +451,8 @@ body {
   z-index: 100000;
 }
 
-.waterfall-col-left {
-  left: 30px;
-}
-
-.waterfall-col-right {
-  right: 30px;
-  animation-delay: -10s;
-}
+.waterfall-col-left { left: 30px; }
+.waterfall-col-right { right: 30px; animation-delay: -10s; }
 
 @keyframes scrollDown {
   0% { transform: translateY(0); }
@@ -687,7 +460,7 @@ body {
 }
 
 .waterfall-ad-card {
-  background: var(--bg-card-solid);
+  background: var(--bg-board);
   border: 1px solid rgba(249, 115, 22, 0.5);
   border-radius: 14px;
   padding: 10px;
@@ -709,14 +482,13 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100001;
-  background: var(--bg-card-solid);
-  border: 1px solid var(--border);
-  border-radius: 20px;
+  background: var(--bg-board);
+  border: 2px solid var(--border-neon);
+  border-radius: 24px;
   padding: 28px;
   max-width: 480px;
   width: calc(100% - 40px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-  pointer-events: auto;
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.5);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -731,17 +503,16 @@ body {
 .support-modal-icon {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--border-neon);
   object-fit: cover;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
   display: block;
 }
 
 .support-modal-title {
   font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
+  color: #fff;
 }
 
 .support-modal-sub {
@@ -756,18 +527,12 @@ body {
   line-height: 1.6;
 }
 
-.support-modal-note {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  line-height: 1.5;
-}
-
 .btn-waterfall-close {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: var(--bg-control);
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--border-neon);
   color: var(--text-main);
   width: 32px;
   height: 32px;
@@ -777,37 +542,24 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  line-height: 1;
-  transition: all 0.15s ease;
-}
-
-.btn-waterfall-close:hover {
-  background: #ef4444;
-  color: #fff;
-  border-color: #ef4444;
-  transform: scale(1.08);
 }
 
 .btn-boosty-action {
   background: linear-gradient(135deg, #f97316, #ea580c);
-  color: #ffffff;
+  color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 14px 20px;
   font-size: 0.92rem;
   font-weight: 800;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  text-align: center;
   text-decoration: none;
   box-shadow: 0 4px 16px rgba(249, 115, 22, 0.45);
-  transition: all 0.2s ease;
 }
 
 .footer-bar {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
   background: var(--bg-card);
   padding: 16px 24px;
   margin-top: auto;
@@ -823,10 +575,6 @@ body {
   color: var(--text-dim);
 }
 
-.footer-signature strong {
-  color: var(--text-main);
-}
-
 @media (max-width: 1200px) {
   .waterfall-col-left, .waterfall-col-right {
     display: none;
@@ -834,400 +582,128 @@ body {
 }
 
 @media (max-width: 980px) {
-  .game-arena {
-    grid-template-columns: 1fr;
-  }
-  .seo-grid {
+  .game-stage-area {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 520px) {
+  .board-grid-8x8 {
+    grid-template-columns: repeat(8, 38px);
+    grid-template-rows: repeat(8, 38px);
+    gap: 4px;
+    padding: 8px;
   }
-  .header-right {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .playing-card {
-    width: 70px;
-    height: 105px;
-    padding: 5px;
-  }
-  .card-rank {
-    font-size: 0.9rem;
-  }
-  .card-center-icon {
-    font-size: 1.5rem;
+  .gem-cell {
+    width: 38px;
+    height: 38px;
+    font-size: 1.25rem;
   }
 }
-  .cyber-cockpit-bar {
-  background: #05020a;
-  border-bottom: 2px solid #a855f7;
-  box-shadow: 0 4px 25px rgba(168, 85, 247, 0.35);
-  padding: 8px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.cockpit-container {
-  max-width: 1560px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cockpit-left, .cockpit-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.system-status-indicator {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 4px 10px;
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  background: #10b981;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulseNeon 1.5s infinite;
-}
-
-@keyframes pulseNeon {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.hud-tag-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  color: #7c3aed;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.cyber-brand-anchor {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.neon-hex-icon {
-  width: 42px;
-  height: 42px;
-  border: 2px solid #a855f7;
-  box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
-  background: #0d0618;
-  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.brand-text-matrix {
-  display: flex;
-  flex-direction: column;
-}
-
-.matrix-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #f5f3ff;
-  text-shadow: 0 0 10px #a855f7, 0 0 20px #06b6d4;
-  line-height: 1.1;
-}
-
-.matrix-subtitle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #06b6d4;
-  letter-spacing: 1px;
-}
-
-.cyber-boosty-btn {
-  background: linear-gradient(135deg, #f97316, #ea580c);
-  border: 1px solid #fdba74;
-  color: #fff;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  padding: 8px 18px;
-  cursor: pointer;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  box-shadow: 0 0 16px rgba(249, 115, 22, 0.5);
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.cyber-boosty-btn:hover {
-  box-shadow: 0 0 26px rgba(249, 115, 22, 0.85);
-  transform: translateY(-1px);
-}
-
-.cyber-switches-cluster {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.cyber-segmented-switch {
-  display: flex;
-  background: #140b24;
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  padding: 2px;
-}
-
-.cyber-switch-node {
-  background: transparent;
-  border: none;
-  color: #a78bfa;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.cyber-switch-node.active {
-  background: #7c3aed;
-  color: #fff;
-  box-shadow: 0 0 10px #7c3aed;
-}
-
-.btn-play-hand {
-  flex: 2;
-  background: #7c3aed !important;
-  border: 2px solid #a855f7 !important;
-  color: #fff !important;
-  font-family: 'JetBrains Mono', monospace !important;
-  font-weight: 900 !important;
-  letter-spacing: 1.5px !important;
-  text-transform: uppercase !important;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important;
-}
-
-.btn-discard-hand {
-  flex: 1;
-  background: #1c0f33 !important;
-  border: 2px solid #f43f5e !important;
-  color: #f43f5e !important;
-  font-family: 'JetBrains Mono', monospace !important;
-  font-weight: 900 !important;
-  letter-spacing: 1px !important;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
-  border-radius: 0 !important;
-}
-</style>
+  </style>
 </head>
 <body>
 
-    <header class="cyber-cockpit-bar">
-    <div class="cockpit-container">
-      <div class="cockpit-left">
-        <div class="system-status-indicator"><span class="pulse-dot"></span>SYS.ONLINE</div>
-        <div class="hud-tag-badge">NET.PROTOCOL v2.4</div>
-      </div>
+  <header class="match-header-bar">
+    <div class="header-inner-row">
+      <a href="#" class="brand-gem-anchor">
+        <div class="gem-icon-circle">
+          <img src="icon.png" width="44" height="44" alt="Cyber Match">
+        </div>
+        <div class="brand-gem-text">
+          <span class="brand-game-title">CYBER MATCH</span>
+          <span class="brand-game-sub">NEON GEMS • ALEXCDRAFT STUDIOS</span>
+        </div>
+      </a>
 
-      <div class="cockpit-center">
-        <a href="#" class="cyber-brand-anchor">
-          <div class="neon-hex-icon">
-            <img src="icon.png" width="38" height="38" alt="Neon Deck">
-          </div>
-          <div class="brand-text-matrix">
-            <span class="matrix-title">NEON DECK</span>
-            <span class="matrix-subtitle">ALEXCDRAFT STUDIOS // CYBER ROGUELIKE</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="cockpit-right">
-        <button onclick="openBoostySupport()" class="cyber-boosty-btn">
-          <span class="btn-glitch-text" data-i18n="support_btn">DONATE // BOOSTY</span>
-          <span class="btn-corner-tr"></span>
+      <div class="nav-cluster-right">
+        <button onclick="openBoostySupport()" class="gem-boosty-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span data-i18n="support_btn">Поддержать Boosty</span>
         </button>
 
-        <div class="cyber-switches-cluster">
-          <div class="cyber-segmented-switch">
-            <button class="cyber-switch-node active" id="btn-theme-dark">DRK</button>
-            <button class="cyber-switch-node" id="btn-theme-light">LGT</button>
-          </div>
-          <div class="cyber-segmented-switch">
-            <button class="cyber-switch-node active" id="btn-lang-ru">RU</button>
-            <button class="cyber-switch-node" id="btn-lang-en">EN</button>
-          </div>
+        <div class="gem-pill-box">
+          <button class="gem-pill-btn active" id="btn-theme-dark">Тёмная</button>
+          <button class="gem-pill-btn" id="btn-theme-light">Светлая</button>
+        </div>
+
+        <div class="gem-pill-box">
+          <button class="gem-pill-btn active" id="btn-lang-ru">RU</button>
+          <button class="gem-pill-btn" id="btn-lang-en">EN</button>
         </div>
       </div>
     </div>
   </header>
 
   <div class="ad-banner-strip">
-    <div class="ad-box">
-      <span class="ad-tag" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
+    <div class="ad-card-slot">
+      <span class="ad-tag-label" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
       <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
     </div>
   </div>
 
-  <main class="game-arena">
+  <main class="game-stage-area">
     
-    <aside class="hud-panel">
-      <div class="hud-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span data-i18n="blind_hud_title">Цель раунда (Blind)</span>
+    <aside class="status-hud-card">
+      <div class="hud-banner-badge">
+        <div class="hud-sub-label" data-i18n="label_level">Уровень 1</div>
+        <div class="hud-big-num" id="display-score">0</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:4px;"><span data-i18n="label_target">Цель:</span> <strong id="display-target">1000</strong></div>
       </div>
 
-      <div class="blind-badge">
-        <div class="blind-title" id="blind-name-display" data-i18n="blind_small">Малый блайнд</div>
-        <div class="blind-score-target" id="blind-target-display">300</div>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar-fill" id="blind-progress-bar"></div>
+      <div class="hud-metrics-grid">
+        <div class="metric-pill">
+          <span class="metric-title" data-i18n="label_moves">Ходов</span>
+          <span class="metric-val" id="display-moves">25</span>
         </div>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-box">
-          <span class="stat-label" data-i18n="stat_score">Счёт</span>
-          <span class="stat-value" id="stat-round-score">0</span>
+        <div class="metric-pill">
+          <span class="metric-title" data-i18n="label_combo">Комбо</span>
+          <span class="metric-val" id="display-combo">x1</span>
         </div>
-        <div class="stat-box">
-          <span class="stat-label" data-i18n="stat_chips">Фишки ($)</span>
-          <span class="stat-value" id="stat-player-cash">15</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label" data-i18n="stat_hands">Рук</span>
-          <span class="stat-value" id="stat-hands-left">4</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label" data-i18n="stat_discards">Сбросов</span>
-          <span class="stat-value" id="stat-discards-left">3</span>
-        </div>
-      </div>
-
-      <div class="stat-box" style="width:100%;">
-        <span class="stat-label" data-i18n="stat_round">Анте / Раунд</span>
-        <span class="stat-value" id="stat-current-ante">Анте 1 (1/3)</span>
       </div>
     </aside>
 
-    <section class="table-center">
-      
-      <div class="score-display-box">
-        <div>
-          <div style="font-size:0.75rem;color:var(--text-dim);" data-i18n="current_combo">Комбинация:</div>
-          <div class="hand-combo-name" id="display-hand-type">Пара</div>
-        </div>
-
-        <div class="calc-formula-row">
-          <div class="calc-chip-blue" id="display-chips-val">10 Фишек</div>
-          <div class="calc-mult-sign">×</div>
-          <div class="calc-chip-red" id="display-mult-val">2 Множ.</div>
-        </div>
-      </div>
-
-      <div class="cards-hand-table" id="cards-hand-container"></div>
-
-      <div class="action-bar-row">
-        <button class="btn-play-hand" id="btn-play-hand">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span data-i18n="btn_play">Сыграть руку</span>
-        </button>
-        <button class="btn-discard-hand" id="btn-discard-hand" data-i18n="btn_discard">Сброс карт</button>
-      </div>
-
+    <section class="match-board-wrapper">
+      <div class="board-grid-8x8" id="board-element"></div>
+      <button class="btn-shuffle-board" id="btn-shuffle-board" data-i18n="btn_restart">Перемешать кристаллы</button>
     </section>
 
-    <aside class="shop-panel">
-      <div class="hud-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span data-i18n="shop_title">Кибер-Модификаторы</span>
+    <aside class="bonuses-hud-card">
+      <div style="font-size:0.88rem;font-weight:800;color:var(--text-main);" data-i18n="rules_title">Как играть:</div>
+
+      <div class="bonus-box">
+        <div class="bonus-icon">💎</div>
+        <div>
+          <div class="bonus-info-title" data-i18n="rule1_title">Линия из 3</div>
+          <div class="bonus-info-sub" data-i18n="rule1_desc">Меняйте соседние кристаллы местами для сбора линии</div>
+        </div>
       </div>
 
-      <div class="joker-card" id="joker-slot-1">
-        <div class="joker-header">
-          <span class="joker-name" data-i18n="joker1_name">Неоновый Череп</span>
-          <span class="joker-cost">$5</span>
+      <div class="bonus-box">
+        <div class="bonus-icon">⚡</div>
+        <div>
+          <div class="bonus-info-title" data-i18n="rule2_title">Каскады комбо</div>
+          <div class="bonus-info-sub" data-i18n="rule2_desc">Кристаллы падают сверху, создавая цепные реакции</div>
         </div>
-        <p class="joker-desc" data-i18n="joker1_desc">+4 к Множителю за каждую сыгранную Пару</p>
-        <button class="btn-buy-joker" onclick="buyJoker(1, 5, 'neon_skull')" data-i18n="buy_btn">Купить</button>
       </div>
 
-      <div class="joker-card" id="joker-slot-2">
-        <div class="joker-header">
-          <span class="joker-name" data-i18n="joker2_name">Голограмма Туза</span>
-          <span class="joker-cost">$7</span>
+      <div class="bonus-box">
+        <div class="bonus-icon">👑</div>
+        <div>
+          <div class="bonus-info-title">Alexcdraft Studios</div>
+          <div class="bonus-info-sub" data-i18n="rule3_desc">Поддержите новые игры и моды студии на Boosty!</div>
         </div>
-        <p class="joker-desc" data-i18n="joker2_desc">+30 Фишек за каждый сыгранный Туз или Король</p>
-        <button class="btn-buy-joker" onclick="buyJoker(2, 7, 'holo_ace')" data-i18n="buy_btn">Купить</button>
-      </div>
-
-      <div class="joker-card" id="joker-slot-3">
-        <div class="joker-header">
-          <span class="joker-name" data-i18n="joker3_name">Квантовый Сет</span>
-          <span class="joker-cost">$10</span>
-        </div>
-        <p class="joker-desc" data-i18n="joker3_desc">×2 Общий Множитель если в руке Сет или Фулл-хаус</p>
-        <button class="btn-buy-joker" onclick="buyJoker(3, 10, 'quantum_set')" data-i18n="buy_btn">Купить</button>
       </div>
     </aside>
 
   </main>
 
   <div class="ad-banner-strip">
-    <div class="ad-box">
-      <span class="ad-tag" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
+    <div class="ad-card-slot">
+      <span class="ad-tag-label" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
       <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
     </div>
   </div>
-
-  <section class="seo-guide-section">
-    <div class="seo-grid">
-      <article class="seo-box">
-        <h2>
-          <span data-i18n="guide_title">Как играть в Neon Deck: Карточный Рогалик</span>
-        </h2>
-        <p data-i18n="guide_desc">
-          Neon Deck вдохновлен лучшими традициями карточных декбилдеров и Balatro. Ваша цель — набрать нужное количество очков за раунд, играя классические покерные комбинации (Пара, Сет, Стрит, Флеш). Модификаторы и кибер-джокеры увеличивают базовые фишки и множитель очков в сотни раз!
-        </p>
-      </article>
-
-      <article class="seo-box">
-        <h3>
-          <span data-i18n="about_title">Alexcdraft Studios</span>
-        </h3>
-        <p data-i18n="about_desc">
-          Мы создаем оригинальные инди-игры, моды для Steam Workshop и веб-приложения. Поддержите развитие проектов на Boosty!
-        </p>
-        <button onclick="openBoostySupport()" class="btn-boosty-neon" style="align-self:flex-start;margin-top:auto;">
-          <span data-i18n="support_btn">Поддержать на Boosty</span>
-        </button>
-      </article>
-    </div>
-  </section>
 
   <div class="support-banner-overlay" id="support-waterfall-overlay">
     <div class="waterfall-col-left">
@@ -1246,18 +722,18 @@ body {
         <img src="icon.png" class="support-modal-icon" width="48" height="48" alt="Alexcdraft Studios">
         <div>
           <h3 class="support-modal-title">Alexcdraft Studios</h3>
-          <span class="support-modal-sub">Steam моды • Игры • Сайты</span>
+          <span class="support-modal-sub">Инди-игры • Сайты • Моды</span>
         </div>
       </div>
-      <p class="support-modal-text">Привет! Я разработчик инди-игр, Steam-модификаций и интерактивных веб-проектов. Поддержка на Boosty помогает выпускать игры и обновления чаще!</p>
+      <p class="support-modal-text">Привет! Я разработчик инди-игр и веб-инструментов. Поддержка на Boosty помогает развивать проекты и радовать новыми релизами!</p>
       <a href="https://boosty.to/vostguy/donate" target="_blank" rel="noopener noreferrer" class="btn-boosty-action">Поддержать на Boosty</a>
     </div>
   </div>
 
   <footer class="footer-bar">
     <div class="footer-inner">
-      <span>Neon Deck • Киберпанк покер-рогалик онлайн</span>
-      <div class="footer-signature"><span>Создано</span> <strong>Alexcdraft Studios</strong></div>
+      <span>Cyber Match: Neon Gems • Онлайн игра Три в ряд</span>
+      <div><span>Создано</span> <strong>Alexcdraft Studios</strong></div>
     </div>
   </footer>
 
@@ -1266,333 +742,261 @@ body {
   const i18n = {
     ru: {
       support_btn: "Поддержать Boosty",
-      theme_dark: "Тёмная",
-      theme_light: "Светлая",
       ad_tag: "СПОНСОРСКАЯ РЕКЛАМА",
-      blind_hud_title: "Цель раунда (Blind)",
-      blind_small: "Малый блайнд",
-      blind_big: "Большой блайнд",
-      blind_boss: "Кибер-Босс Блайнд",
-      stat_score: "Счёт",
-      stat_chips: "Фишки ($)",
-      stat_hands: "Рук",
-      stat_discards: "Сбросов",
-      stat_round: "Анте / Раунд",
-      current_combo: "Комбинация:",
-      btn_play: "Сыграть руку",
-      btn_discard: "Сброс карт",
-      shop_title: "Кибер-Модификаторы",
-      joker1_name: "Неоновый Череп",
-      joker1_desc: "+4 к Множителю за каждую сыгранную Пару",
-      joker2_name: "Голограмма Туза",
-      joker2_desc: "+30 Фишек за каждый сыгранный Туз или Король",
-      joker3_name: "Квантовый Сет",
-      joker3_desc: "×2 Общий Множитель если в руке Сет или Фулл-хаус",
-      buy_btn: "Купить",
-      bought_btn: "Куплено",
-      guide_title: "Как играть в Neon Deck: Карточный Рогалик",
-      guide_desc: "Neon Deck вдохновлен карточными декбилдерами. Набирайте нужное количество очков за раунд, играя классические покерные комбинации (Пара, Сет, Стрит, Флеш). Модификаторы и кибер-джокеры увеличивают базовые фишки и множитель очков!",
-      about_title: "Alexcdraft Studios",
-      about_desc: "Мы создаем оригинальные инди-игры, моды для Steam Workshop и веб-приложения. Поддержите развитие проектов на Boosty!"
+      label_level: "Уровень 1",
+      label_target: "Цель:",
+      label_moves: "Ходов",
+      label_combo: "Комбо",
+      btn_restart: "Перемешать кристаллы",
+      rules_title: "Как играть:",
+      rule1_title: "Линия из 3",
+      rule1_desc: "Меняйте соседние кристаллы местами для сбора линии",
+      rule2_title: "Каскады комбо",
+      rule2_desc: "Кристаллы падают сверху, создавая цепные реакции",
+      rule3_desc: "Поддержите новые игры и моды студии на Boosty!"
     },
     en: {
       support_btn: "Support Boosty",
-      theme_dark: "Dark",
-      theme_light: "Light",
       ad_tag: "SPONSORED ADVERTISEMENT",
-      blind_hud_title: "Round Target (Blind)",
-      blind_small: "Small Blind",
-      blind_big: "Big Blind",
-      blind_boss: "Cyber Boss Blind",
-      stat_score: "Score",
-      stat_chips: "Chips ($)",
-      stat_hands: "Hands",
-      stat_discards: "Discards",
-      stat_round: "Ante / Round",
-      current_combo: "Combo:",
-      btn_play: "Play Hand",
-      btn_discard: "Discard",
-      shop_title: "Cyber Modifiers",
-      joker1_name: "Neon Skull",
-      joker1_desc: "+4 Mult for every played Pair",
-      joker2_name: "Holo Ace",
-      joker2_desc: "+30 Chips for each played Ace or King",
-      joker3_name: "Quantum Set",
-      joker3_desc: "×2 Total Mult if hand contains 3 of a Kind or Full House",
-      buy_btn: "Buy",
-      bought_btn: "Owned",
-      guide_title: "How to Play Neon Deck Roguelike",
-      guide_desc: "Neon Deck is a tactical poker roguelike. Score target chips by playing poker hands (Pair, Straight, Flush). Cyber jokers boost your base chips and multipliers to astronomical levels!",
-      about_title: "Alexcdraft Studios",
-      about_desc: "We craft indie games, Steam Workshop mods and creative web tools. Back our projects on Boosty!"
+      label_level: "Level 1",
+      label_target: "Goal:",
+      label_moves: "Moves",
+      label_combo: "Combo",
+      btn_restart: "Shuffle Board",
+      rules_title: "How to Play:",
+      rule1_title: "Line of 3",
+      rule1_desc: "Swap adjacent crystals to create horizontal or vertical lines",
+      rule2_title: "Cascading Combos",
+      rule2_desc: "Gems fall from above, triggering automatic chain multiplier reactions",
+      rule3_desc: "Support our indie games and workshop mods on Boosty!"
     }
   };
 
   let currentLang = 'ru';
-  let ante = 1;
-  let roundInAnte = 1;
-  let targetScore = 300;
-  let currentScore = 0;
-  let handsLeft = 4;
-  let discardsLeft = 3;
-  let playerCash = 15;
-  let activeJokers = [];
+  const GEMS = ['💎', '🔮', '🟢', '🔥', '⭐'];
+  const ROWS = 8;
+  const COLS = 8;
+  let board = [];
+  let selected = null;
+  let score = 0;
+  let moves = 25;
+  let target = 1000;
+  let combo = 1;
 
-  const suits = [
-    { name: 'spades', sym: '♠', color: 'black' },
-    { name: 'hearts', sym: '♥', color: 'red' },
-    { name: 'diamonds', sym: '♦', color: 'red' },
-    { name: 'clubs', sym: '♣', color: 'black' }
-  ];
-
-  const ranks = [
-    { name: '2', val: 2 },
-    { name: '3', val: 3 },
-    { name: '4', val: 4 },
-    { name: '5', val: 5 },
-    { name: '6', val: 6 },
-    { name: '7', val: 7 },
-    { name: '8', val: 8 },
-    { name: '9', val: 9 },
-    { name: '10', val: 10 },
-    { name: 'J', val: 10 },
-    { name: 'Q', val: 10 },
-    { name: 'K', val: 10 },
-    { name: 'A', val: 11 }
-  ];
-
-  let deck = [];
-  let hand = [];
-  let selectedIndices = [];
-
-  function generateDeck() {
-    deck = [];
-    for (let s of suits) {
-      for (let r of ranks) {
-        deck.push({ rank: r.name, val: r.val, suit: s.sym, color: s.color, suitName: s.name });
+  function initBoard() {
+    board = [];
+    for (let r = 0; r < ROWS; r++) {
+      board[r] = [];
+      for (let c = 0; c < COLS; c++) {
+        board[r][c] = getRandomGemExcluding(r, c);
       }
     }
-    deck.sort(() => Math.random() - 0.5);
   }
 
-  function dealHand(count = 8) {
-    while (hand.length < count && deck.length > 0) {
-      hand.push(deck.pop());
+  function getRandomGemExcluding(r, c) {
+    let choices = [...GEMS];
+    if (c >= 2 && board[r][c-1] === board[r][c-2]) {
+      choices = choices.filter(g => g !== board[r][c-1]);
     }
-    selectedIndices = [];
-    renderHand();
-    evaluateSelection();
+    if (r >= 2 && board[r-1][c] === board[r-2][c]) {
+      choices = choices.filter(g => g !== board[r-1][c]);
+    }
+    return choices[Math.floor(Math.random() * choices.length)];
   }
 
-  function renderHand() {
-    const container = document.getElementById('cards-hand-container');
-    container.innerHTML = '';
-    hand.forEach((card, idx) => {
-      const cardEl = document.createElement('div');
-      cardEl.className = `playing-card ${card.color} ${selectedIndices.includes(idx) ? 'selected' : ''}`;
-      cardEl.innerHTML = `
-        <div class="card-corner">
-          <span class="card-rank">${card.rank}</span>
-          <span class="card-suit">${card.suit}</span>
-        </div>
-        <div class="card-center-icon">${card.suit}</div>
-        <div class="card-corner" style="transform:rotate(180deg);">
-          <span class="card-rank">${card.rank}</span>
-          <span class="card-suit">${card.suit}</span>
-        </div>
-      `;
-      cardEl.addEventListener('click', () => {
-        if (selectedIndices.includes(idx)) {
-          selectedIndices = selectedIndices.filter(i => i !== idx);
-        } else {
-          if (selectedIndices.length < 5) selectedIndices.push(idx);
+  function renderBoard() {
+    const el = document.getElementById('board-element');
+    el.innerHTML = '';
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const cell = document.createElement('div');
+        cell.className = 'gem-cell';
+        if (selected && selected.r === r && selected.c === c) {
+          cell.classList.add('selected');
         }
-        renderHand();
-        evaluateSelection();
-      });
-      container.appendChild(cardEl);
+        cell.textContent = board[r][c];
+        cell.addEventListener('click', () => handleCellClick(r, c));
+        el.appendChild(cell);
+      }
+    }
+  }
+
+  function handleCellClick(r, c) {
+    if (moves <= 0) return;
+    if (!selected) {
+      selected = { r, c };
+      renderBoard();
+    } else {
+      if (selected.r === r && selected.c === c) {
+        selected = null;
+        renderBoard();
+        return;
+      }
+
+      const isAdjacent = (Math.abs(selected.r - r) === 1 && selected.c === c) ||
+                         (Math.abs(selected.c - c) === 1 && selected.r === r);
+
+      if (isAdjacent) {
+        swap(selected.r, selected.c, r, c);
+        const matches = findMatches();
+        if (matches.length > 0) {
+          moves--;
+          selected = null;
+          combo = 1;
+          processMatches(matches);
+        } else {
+          swap(selected.r, selected.c, r, c);
+          selected = null;
+          renderBoard();
+        }
+      } else {
+        selected = { r, c };
+        renderBoard();
+      }
+    }
+  }
+
+  function swap(r1, c1, r2, c2) {
+    const temp = board[r1][c1];
+    board[r1][c1] = board[r2][c2];
+    board[r2][c2] = temp;
+  }
+
+  function findMatches() {
+    const matched = new Set();
+
+    for (let r = 0; r < ROWS; r++) {
+      let matchLen = 1;
+      for (let c = 0; c < COLS; c++) {
+        const checkNext = c < COLS - 1 && board[r][c] === board[r][c+1] && board[r][c] !== '';
+        if (checkNext) {
+          matchLen++;
+        } else {
+          if (matchLen >= 3) {
+            for (let i = 0; i < matchLen; i++) {
+              matched.add(`${r},${c - i}`);
+            }
+          }
+          matchLen = 1;
+        }
+      }
+    }
+
+    for (let c = 0; c < COLS; c++) {
+      let matchLen = 1;
+      for (let r = 0; r < ROWS; r++) {
+        const checkNext = r < ROWS - 1 && board[r][c] === board[r+1][c] && board[r][c] !== '';
+        if (checkNext) {
+          matchLen++;
+        } else {
+          if (matchLen >= 3) {
+            for (let i = 0; i < matchLen; i++) {
+              matched.add(`${r - i},${c}`);
+            }
+          }
+          matchLen = 1;
+        }
+      }
+    }
+
+    return Array.from(matched).map(s => {
+      const [r, c] = s.split(',').map(Number);
+      return { r, c };
     });
   }
 
-  function evaluateSelection() {
-    const selectedCards = selectedIndices.map(i => hand[i]);
-    const comboNameEl = document.getElementById('display-hand-type');
-    const chipsEl = document.getElementById('display-chips-val');
-    const multEl = document.getElementById('display-mult-val');
-
-    if (selectedCards.length === 0) {
-      comboNameEl.textContent = currentLang === 'ru' ? 'Выберите карты' : 'Select cards';
-      chipsEl.textContent = '0 ' + (currentLang === 'ru' ? 'Фишек' : 'Chips');
-      multEl.textContent = '0 ' + (currentLang === 'ru' ? 'Множ.' : 'Mult');
-      return { baseChips: 0, baseMult: 0, name: '' };
-    }
-
-    const rankCounts = {};
-    const suitCounts = {};
-    let cardSum = 0;
-    selectedCards.forEach(c => {
-      rankCounts[c.rank] = (rankCounts[c.rank] || 0) + 1;
-      suitCounts[c.suitName] = (suitCounts[c.suitName] || 0) + 1;
-      cardSum += c.val;
+  function processMatches(matches) {
+    const earned = matches.length * 10 * combo;
+    score += earned;
+    matches.forEach(m => {
+      board[m.r][m.c] = '';
     });
+    updateHUD();
+    renderBoard();
 
-    const counts = Object.values(rankCounts).sort((a,b) => b - a);
-    let combo = 'Старшая карта';
-    let baseChips = 5 + cardSum;
-    let baseMult = 1;
+    setTimeout(() => {
+      dropGems();
+      renderBoard();
 
-    if (counts[0] === 4) {
-      combo = 'Каре (4 карты)';
-      baseChips = 60 + cardSum;
-      baseMult = 7;
-    } else if (counts[0] === 3 && counts[1] === 2) {
-      combo = 'Фулл-Хаус';
-      baseChips = 40 + cardSum;
-      baseMult = 4;
-    } else if (Object.values(suitCounts).some(cnt => cnt >= 5)) {
-      combo = 'Флеш (одна масть)';
-      baseChips = 35 + cardSum;
-      baseMult = 4;
-    } else if (counts[0] === 3) {
-      combo = 'Сет (Тройка)';
-      baseChips = 30 + cardSum;
-      baseMult = 3;
-    } else if (counts[0] === 2 && counts[1] === 2) {
-      combo = 'Две Пары';
-      baseChips = 20 + cardSum;
-      baseMult = 2;
-    } else if (counts[0] === 2) {
-      combo = 'Пара';
-      baseChips = 10 + cardSum;
-      baseMult = 2;
+      setTimeout(() => {
+        const nextMatches = findMatches();
+        if (nextMatches.length > 0) {
+          combo++;
+          processMatches(nextMatches);
+        } else {
+          checkGameStatus();
+        }
+      }, 200);
+    }, 200);
+  }
+
+  function dropGems() {
+    for (let c = 0; c < COLS; c++) {
+      let emptyRow = ROWS - 1;
+      for (let r = ROWS - 1; r >= 0; r--) {
+        if (board[r][c] !== '') {
+          if (emptyRow !== r) {
+            board[emptyRow][c] = board[r][c];
+            board[r][c] = '';
+          }
+          emptyRow--;
+        }
+      }
+      for (let r = emptyRow; r >= 0; r--) {
+        board[r][c] = GEMS[Math.floor(Math.random() * GEMS.length)];
+      }
     }
+  }
 
-    if (activeJokers.includes('neon_skull') && (combo.includes('Пара') || combo.includes('Фулл-Хаус'))) {
-      baseMult += 4;
+  function checkGameStatus() {
+    updateHUD();
+    if (score >= target) {
+      setTimeout(() => {
+        alert(currentLang === 'ru' ? 'ПОБЕДА! Уровень пройден!' : 'VICTORY! Level completed!');
+        target += 800;
+        moves += 15;
+        initBoard();
+        renderBoard();
+        updateHUD();
+      }, 250);
+    } else if (moves <= 0) {
+      setTimeout(() => {
+        alert(currentLang === 'ru' ? 'ХОДЫ ЗАКОНЧИЛИСЬ! Начните заново.' : 'GAME OVER! Out of moves.');
+        score = 0;
+        moves = 25;
+        target = 1000;
+        initBoard();
+        renderBoard();
+        updateHUD();
+      }, 250);
     }
-    if (activeJokers.includes('holo_ace')) {
-      const highCards = selectedCards.filter(c => c.rank === 'A' || c.rank === 'K').length;
-      baseChips += highCards * 30;
-    }
-    if (activeJokers.includes('quantum_set') && (combo.includes('Сет') || combo.includes('Фулл-Хаус'))) {
-      baseMult *= 2;
-    }
-
-    comboNameEl.textContent = combo;
-    chipsEl.textContent = `${baseChips} ` + (currentLang === 'ru' ? 'Фишек' : 'Chips');
-    multEl.textContent = `${baseMult} ` + (currentLang === 'ru' ? 'Множ.' : 'Mult');
-
-    return { baseChips, baseMult, name: combo };
   }
 
   function updateHUD() {
-    document.getElementById('stat-round-score').textContent = currentScore;
-    document.getElementById('blind-target-display').textContent = targetScore;
-    document.getElementById('stat-player-cash').textContent = playerCash;
-    document.getElementById('stat-hands-left').textContent = handsLeft;
-    document.getElementById('stat-discards-left').textContent = discardsLeft;
-
-    const roundNames = [
-      i18n[currentLang].blind_small,
-      i18n[currentLang].blind_big,
-      i18n[currentLang].blind_boss
-    ];
-    document.getElementById('blind-name-display').textContent = roundNames[roundInAnte - 1];
-    document.getElementById('stat-current-ante').textContent = `${currentLang === 'ru' ? 'Анте' : 'Ante'} ${ante} (${roundInAnte}/3)`;
-
-    const pct = Math.min(100, Math.floor((currentScore / targetScore) * 100));
-    document.getElementById('blind-progress-bar').style.width = pct + '%';
+    document.getElementById('display-score').textContent = score;
+    document.getElementById('display-moves').textContent = moves;
+    document.getElementById('display-target').textContent = target;
+    document.getElementById('display-combo').textContent = 'x' + combo;
   }
 
-  function playHand() {
-    if (selectedIndices.length === 0 || handsLeft <= 0) return;
-    const { baseChips, baseMult } = evaluateSelection();
-    const scored = baseChips * baseMult;
-    currentScore += scored;
-    handsLeft--;
-
-    hand = hand.filter((_, idx) => !selectedIndices.includes(idx));
-    selectedIndices = [];
-    dealHand(8);
-    updateHUD();
-
-    if (currentScore >= targetScore) {
-      setTimeout(() => {
-        playerCash += 4 + roundInAnte * 2;
-        alert((currentLang === 'ru' ? 'ПОБЕДА В РАУНДЕ! Получено $' : 'ROUND CLEARED! Won $') + (4 + roundInAnte * 2));
-        roundInAnte++;
-        if (roundInAnte > 3) {
-          roundInAnte = 1;
-          ante++;
-        }
-        targetScore = Math.floor(targetScore * 1.8);
-        currentScore = 0;
-        handsLeft = 4;
-        discardsLeft = 3;
-        generateDeck();
-        hand = [];
-        dealHand(8);
-        updateHUD();
-      }, 300);
-    } else if (handsLeft <= 0) {
-      setTimeout(() => {
-        alert(currentLang === 'ru' ? 'ИГРА ОКОНЧЕНА! Не хватило очков для блайнда.' : 'GAME OVER! Target score not reached.');
-        ante = 1;
-        roundInAnte = 1;
-        targetScore = 300;
-        currentScore = 0;
-        handsLeft = 4;
-        discardsLeft = 3;
-        playerCash = 15;
-        activeJokers = [];
-        generateDeck();
-        hand = [];
-        dealHand(8);
-        updateHUD();
-      }, 300);
-    }
-  }
-
-  function discardHand() {
-    if (selectedIndices.length === 0 || discardsLeft <= 0) return;
-    discardsLeft--;
-    hand = hand.filter((_, idx) => !selectedIndices.includes(idx));
-    selectedIndices = [];
-    dealHand(8);
-    updateHUD();
-  }
-
-  window.buyJoker = function(slot, cost, jokerKey) {
-    if (playerCash >= cost && !activeJokers.includes(jokerKey)) {
-      playerCash -= cost;
-      activeJokers.push(jokerKey);
-      const card = document.getElementById(`joker-slot-${slot}`);
-      const btn = card.querySelector('.btn-buy-joker');
-      btn.textContent = i18n[currentLang].bought_btn;
-      btn.disabled = true;
-      card.style.borderColor = 'var(--accent-green)';
-      updateHUD();
-    }
-  };
-
-  function applyLanguage(lang) {
+  function applyLang(lang) {
     currentLang = lang;
     const texts = i18n[lang];
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (texts[key]) el.textContent = texts[key];
     });
-    updateHUD();
-    evaluateSelection();
   }
 
   function init() {
-    generateDeck();
-    dealHand(8);
+    initBoard();
+    renderBoard();
     updateHUD();
 
-    document.getElementById('btn-play-hand').addEventListener('click', playHand);
-    document.getElementById('btn-discard-hand').addEventListener('click', discardHand);
+    document.getElementById('btn-shuffle-board').addEventListener('click', () => {
+      initBoard();
+      renderBoard();
+    });
 
     document.getElementById('btn-theme-dark').addEventListener('click', () => {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -1609,13 +1013,13 @@ body {
     document.getElementById('btn-lang-ru').addEventListener('click', () => {
       document.getElementById('btn-lang-ru').classList.add('active');
       document.getElementById('btn-lang-en').classList.remove('active');
-      applyLanguage('ru');
+      applyLang('ru');
     });
 
     document.getElementById('btn-lang-en').addEventListener('click', () => {
       document.getElementById('btn-lang-en').classList.add('active');
       document.getElementById('btn-lang-ru').classList.remove('active');
-      applyLanguage('en');
+      applyLang('en');
     });
 
     window.openBoostySupport = function() {
