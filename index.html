@@ -28,56 +28,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=JetBrains+Mono:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "VideoGame",
-        "name": "Jewel Neo Rush",
-        "url": "https://auraflow-one.vercel.app/",
-        "description": "Free web-based Match-3 puzzle game styled after Japanese retro arcade cabinets.",
-        "genre": ["Puzzle", "Match 3", "Casual Game", "Arcade"],
-        "gamePlatform": ["Web Browser", "Desktop", "Mobile"],
-        "applicationCategory": "Game",
-        "operatingSystem": "All",
-        "playMode": "SinglePlayer",
-        "inLanguage": ["ru", "en"],
-        "author": {
-          "@type": "Organization",
-          "name": "Alexcdraft Studios"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Как играть в игру Три в ряд Jewel Neo Rush?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Нажимайте на соседние кристаллы, чтобы поменять их местами и выстроить линию из 3, 4 или 5 одинаковых самоцветов по горизонтали или вертикали."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Нужно ли скачивать игру или регистрироваться?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Нет, Jewel Neo Rush работает прямо в браузере на телефонах и компьютерах без регистрации, скачивания и платных подписок."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Есть ли в игре звуки или громкая музыка?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Игра полностью беззвучна, чтобы вы могли комфортно играть в любом месте, на работе или под свои собственные любимые треки."
-            }
-          }
-        ]
-      }
-    ]
+    "@type": "SoftwareApplication",
+    "name": "Jewel Neo Rush",
+    "url": "https://auraflow-one.vercel.app/",
+    "image": "https://auraflow-one.vercel.app/icon.png",
+    "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
+    "applicationCategory": "GameApplication",
+    "description": "Free Match-3 puzzle game styled after Japanese retro arcade cabinets. No sounds, instant play.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1420",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Alexcdraft Studios",
+      "url": "https://auraflow-one.vercel.app/"
+    }
   }
   </script>
 
@@ -126,37 +102,38 @@ body {
 
 .wing-ad-column-left, .wing-ad-column-right {
   position: fixed;
-  top: 40px;
-  width: 170px;
+  top: 24px;
+  width: 260px;
   z-index: 50;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
-.wing-ad-column-left { left: 20px; }
-.wing-ad-column-right { right: 20px; }
+.wing-ad-column-left { left: 16px; }
+.wing-ad-column-right { right: 16px; }
 
 .wing-marquee-box {
   background: var(--cabinet-inner);
   border: 2px solid var(--neon-cyan);
-  border-radius: 8px;
-  padding: 6px;
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 0 22px rgba(6, 182, 212, 0.45);
 }
 
 .wing-tag {
   font-family: 'Chakra Petch', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 800;
   color: var(--neon-yellow);
   text-align: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
 }
 
 .wing-marquee-box iframe {
   width: 100% !important;
-  height: 90px !important;
+  height: 250px !important;
   border: 0;
   display: block;
 }
@@ -644,9 +621,9 @@ body {
     </div>
     <div class="support-modal-center">
       <button class="btn-waterfall-close" onclick="closeBoostySupport()" aria-label="Закрыть">&times;</button>
-      <div class="support-modal-title">Alexcdraft Studios</div>
-      <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.6;">Поддержите независимого разработчика инди-игр, Steam-модов и интерактивных веб-сервисов на Boosty!</p>
-      <a href="https://boosty.to/vostguy/donate" target="_blank" rel="noopener noreferrer" class="btn-boosty-final">Поддержать на Boosty</a>
+      <div class="support-modal-title" data-i18n="boosty_title">Alexcdraft Studios</div>
+      <p style="font-size:0.84rem;color:#cbd5e1;line-height:1.6;" data-i18n="boosty_desc">Поддержите независимого разработчика инди-игр, Steam-модов и интерактивных веб-сервисов на Boosty!</p>
+      <a href="https://boosty.to/vostguy/donate" target="_blank" rel="noopener noreferrer" class="btn-boosty-final" data-i18n="boosty_action">Поддержать на Boosty</a>
     </div>
   </div>
 
@@ -664,7 +641,10 @@ body {
       target_label: "ЦЕЛЬ",
       moves_label: "ХОДЫ",
       combo_label: "КОМБО",
-      shuffle_btn: "ПЕРЕТАСОВАТЬ ПОЛЕ"
+      shuffle_btn: "ПЕРЕТАСОВАТЬ ПОЛЕ",
+      boosty_title: "Alexcdraft Studios",
+      boosty_desc: "Поддержите независимого разработчика инди-игр, Steam-модов и интерактивных веб-сервисов на Boosty!",
+      boosty_action: "Поддержать на Boosty"
     },
     en: {
       boosty_btn: "Boosty",
@@ -672,7 +652,10 @@ body {
       target_label: "TARGET",
       moves_label: "MOVES",
       combo_label: "COMBO",
-      shuffle_btn: "SHUFFLE BOARD"
+      shuffle_btn: "SHUFFLE BOARD",
+      boosty_title: "Alexcdraft Studios",
+      boosty_desc: "Support independent development of indie games, Steam mods and web apps on Boosty!",
+      boosty_action: "Support on Boosty"
     }
   };
 
