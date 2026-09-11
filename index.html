@@ -863,42 +863,224 @@ body {
     font-size: 1.5rem;
   }
 }
-  </style>
+  .cyber-cockpit-bar {
+  background: #05020a;
+  border-bottom: 2px solid #a855f7;
+  box-shadow: 0 4px 25px rgba(168, 85, 247, 0.35);
+  padding: 8px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.cockpit-container {
+  max-width: 1560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cockpit-left, .cockpit-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.system-status-indicator {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 10px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseNeon 1.5s infinite;
+}
+
+@keyframes pulseNeon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hud-tag-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #7c3aed;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cyber-brand-anchor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.neon-hex-icon {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #a855f7;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+  background: #0d0618;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.brand-text-matrix {
+  display: flex;
+  flex-direction: column;
+}
+
+.matrix-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #f5f3ff;
+  text-shadow: 0 0 10px #a855f7, 0 0 20px #06b6d4;
+  line-height: 1.1;
+}
+
+.matrix-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #06b6d4;
+  letter-spacing: 1px;
+}
+
+.cyber-boosty-btn {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border: 1px solid #fdba74;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 8px 18px;
+  cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.5);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.cyber-boosty-btn:hover {
+  box-shadow: 0 0 26px rgba(249, 115, 22, 0.85);
+  transform: translateY(-1px);
+}
+
+.cyber-switches-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cyber-segmented-switch {
+  display: flex;
+  background: #140b24;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  padding: 2px;
+}
+
+.cyber-switch-node {
+  background: transparent;
+  border: none;
+  color: #a78bfa;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cyber-switch-node.active {
+  background: #7c3aed;
+  color: #fff;
+  box-shadow: 0 0 10px #7c3aed;
+}
+
+.btn-play-hand {
+  flex: 2;
+  background: #7c3aed !important;
+  border: 2px solid #a855f7 !important;
+  color: #fff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important;
+}
+
+.btn-discard-hand {
+  flex: 1;
+  background: #1c0f33 !important;
+  border: 2px solid #f43f5e !important;
+  color: #f43f5e !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: 0 !important;
+}
+</style>
 </head>
 <body>
 
-  <header class="game-header">
-    <div class="header-inner">
-      <a href="#" class="brand-wrapper">
-        <div class="brand-icon-box">
-          <img src="icon.png" class="brand-img" width="40" height="40" alt="Neon Deck">
-        </div>
-        <div>
-          <div class="brand-name">NEON DECK</div>
-          <div class="brand-sub">Alexcdraft Studios</div>
-        </div>
-      </a>
+    <header class="cyber-cockpit-bar">
+    <div class="cockpit-container">
+      <div class="cockpit-left">
+        <div class="system-status-indicator"><span class="pulse-dot"></span>SYS.ONLINE</div>
+        <div class="hud-tag-badge">NET.PROTOCOL v2.4</div>
+      </div>
 
-      <div class="header-right">
-        <button onclick="openBoostySupport()" class="btn-boosty-neon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          <span data-i18n="support_btn">Поддержать Boosty</span>
+      <div class="cockpit-center">
+        <a href="#" class="cyber-brand-anchor">
+          <div class="neon-hex-icon">
+            <img src="icon.png" width="38" height="38" alt="Neon Deck">
+          </div>
+          <div class="brand-text-matrix">
+            <span class="matrix-title">NEON DECK</span>
+            <span class="matrix-subtitle">ALEXCDRAFT STUDIOS // CYBER ROGUELIKE</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="cockpit-right">
+        <button onclick="openBoostySupport()" class="cyber-boosty-btn">
+          <span class="btn-glitch-text" data-i18n="support_btn">DONATE // BOOSTY</span>
+          <span class="btn-corner-tr"></span>
         </button>
 
-        <div class="pill-group">
-          <button class="pill-btn active" id="btn-theme-dark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <span data-i18n="theme_dark">Тёмная</span>
-          </button>
-          <button class="pill-btn" id="btn-theme-light">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            <span data-i18n="theme_light">Светлая</span>
-          </button>
-        </div>
-
-        <div class="pill-group">
-          <button class="pill-btn active" id="btn-lang-ru">RU</button>
-          <button class="pill-btn" id="btn-lang-en">EN</button>
+        <div class="cyber-switches-cluster">
+          <div class="cyber-segmented-switch">
+            <button class="cyber-switch-node active" id="btn-theme-dark">DRK</button>
+            <button class="cyber-switch-node" id="btn-theme-light">LGT</button>
+          </div>
+          <div class="cyber-segmented-switch">
+            <button class="cyber-switch-node active" id="btn-lang-ru">RU</button>
+            <button class="cyber-switch-node" id="btn-lang-en">EN</button>
+          </div>
         </div>
       </div>
     </div>
@@ -907,7 +1089,7 @@ body {
   <div class="ad-banner-strip">
     <div class="ad-box">
       <span class="ad-tag" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
-      <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
+      <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
     </div>
   </div>
 
@@ -1018,7 +1200,7 @@ body {
   <div class="ad-banner-strip">
     <div class="ad-box">
       <span class="ad-tag" data-i18n="ad_tag">СПОНСОРСКАЯ РЕКЛАМА</span>
-      <iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
+      <iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy" style="border:0;width:100%;height:90px;display:block;"></iframe>
     </div>
   </div>
 
@@ -1049,14 +1231,14 @@ body {
 
   <div class="support-banner-overlay" id="support-waterfall-overlay">
     <div class="waterfall-col-left">
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
     </div>
     <div class="waterfall-col-right">
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
-      <div class="waterfall-ad-card"><iframe data-aa="2454996" src="//acceptable.a-ads.com/2454996/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
+      <div class="waterfall-ad-card"><iframe data-aa="2455016" src="//acceptable.a-ads.com/2455016/?size=Adaptive" loading="lazy"></iframe></div>
     </div>
     <div class="support-modal-center">
       <button class="btn-waterfall-close" onclick="closeBoostySupport()" aria-label="Закрыть">&times;</button>
